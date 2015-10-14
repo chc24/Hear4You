@@ -59,6 +59,32 @@
   color: #002703;
 }
 
+body {
+  height: 100%;
+  width: 100%;
+  background-image: url("../Assets/login_bg.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.panel-default{
+  width: 100%;
+  position: absolute;
+  margin-top:40%;
+  z-index: 0;
+}
+
+.panel-default RoleForm{
+  position: absolute;
+  z-index: 1;
+}
+
+.form-group .last {
+ margin-bottom:1px;
+} 
+
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #ffffff;

@@ -3,7 +3,7 @@
 body {
 	height: 100%;
 	width: 100%;
- 	background-image: url(../images/login_bg.jpg) ;
+	background-image: url("../Assets/login_bg.jpg");
  	-webkit-background-size: cover;
  	-moz-background-size: cover;
  	-o-background-size: cover;
@@ -22,6 +22,6 @@ body {
 	z-index: 1;
 }
 
-.form-group.last {
- margin-bottom:0px;
+.form-group .last {
+ margin-bottom:1px;
 }
