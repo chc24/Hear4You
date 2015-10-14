@@ -11,14 +11,22 @@
 	<link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 	<link href="css/custom.css" type="text/css" rel="stylesheet">
 
+     <!-- Scrolling Nav JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/scrolling-nav.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/grayscale.js"></script>
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
-  </head>
- <body>
+</head>
+
+  <body>
  	
     <!-- Navigation -->
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -38,7 +46,6 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="nav-bar-content">
                 <ul class="nav navbar-nav navbar-left">
-                    
                     <li>
                         <a href="#">Hear4You</a>
                     </li>
@@ -60,13 +67,39 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container" id="Welcome_Screen">
+    <section id ="loading" class="loading">
+    <div class="container">
         <div class="row">
-
+            <div class = "col-lg-12">
+                <h2>Welcome to Hear4You</h2>
+                <h3>An online platform to facilitate healthy conversations about mental health, awareness, and wellbeing.</h3>
+                <a href="#mission" class="btn btn-dark btn-lg">Find Out More</a>
+            </div>  
         </div>
-       
     </div>
-    <!-- /.container -->
+    </section>
+    
+    <section id = "mission" class="mission">
+    <div class="container">
+        <div class="row">
+            <div class = "col-lg-12">
+                <h2>Mission Statement</h2>
+                <h3></h3>
+            </div>  
+        </div>
+    </div>
+    </section>
+
+    <section id = "usage" class ="usage">
+        <div class="container">
+            <div class="row">
+                <div class = "col-lg-12">
+                    <h2>Terms of Use</h2>
+                    <h3></h3>
+                </div>  
+            </div>
+        </div>
+    </section>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -76,19 +109,24 @@
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script>
+        // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
 
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,72 +1,78 @@
-.navbar-default {
-  background-color: #005a06;
-  border-color: #31a339;
+.navbar-custom {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: #000000;
 }
-.navbar-default .navbar-brand {
-  color: #ffffff;
+
+.navbar-custom .navbar-brand {
+    font-weight: 700;
 }
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-  color: #002703;
+
+.navbar-custom .navbar-brand:focus {
+    outline: 0;
 }
-.navbar-default .navbar-text {
-  color: #ffffff;
+
+.navbar-custom .navbar-brand .navbar-toggle {
+    padding: 4px 6px;
+    font-size: 16px;
+    color: #fff;
 }
-.navbar-default .navbar-nav > li > a {
-  color: #ffffff;
+
+.navbar-custom .navbar-brand .navbar-toggle:focus,
+.navbar-custom .navbar-brand .navbar-toggle:active {
+    outline: 0;
 }
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: #002703;
+
+.navbar-custom a {
+    color: #fff;
 }
-.navbar-default .navbar-nav > li > .dropdown-menu {
-  background-color: #005a06;
+
+.navbar-custom .nav li a {
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
 }
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a {
-  color: #ffffff;
+
+.navbar-custom .nav li a:hover {
+    outline: 0;
+    color: rgba(255,255,255,.8);
+    background-color: transparent;
 }
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
-  color: #002703;
-  background-color: #31a339;
+
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav li a:active {
+    outline: 0;
+    background-color: transparent;
 }
-.navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
-  background-color: #005a06;
+
+.navbar-custom .nav li.active {
+    outline: 0;
 }
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #002703;
-  background-color: #31a339;
+
+.navbar-custom .nav li.active a {
+    background-color: rgba(255,255,255,.3);
 }
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  color: #002703;
-  background-color: #31a339;
+
+.navbar-custom .nav li.active a:hover {
+    color: #fff;
 }
-.navbar-default .navbar-toggle {
-  border-color: #31a339;
-}
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-  background-color: #31a339;
-}
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #ffffff;
-}
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-  border-color: #ffffff;
-}
-.navbar-default .navbar-link {
-  color: #ffffff;
-}
-.navbar-default .navbar-link:hover {
-  color: #002703;
+
+html{
+  height: 100%;
+  width: 100%;
 }
 
 body {
   height: 100%;
   width: 100%;
-  background-image: url("../Assets/login_bg.jpg");
+  background-image: url("../Assets/loadbg.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .panel-default{
@@ -83,7 +89,15 @@ body {
 
 .form-group .last {
  margin-bottom:1px;
-} 
+}
+
+h2{
+  text-align: center;
+}
+
+h3{
+  text-align: center;
+}
 
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -96,4 +110,47 @@ body {
     color: #002703;
     background-color: #31a339;
   }
+}
+
+.btn-dark{
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0;
+    color: #fff;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.btn-dark:hover,
+.btn-dark:focus,
+.btn-dark:active {
+    color: #fff;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.loading {
+    height: 100%;
+    padding-top: 250px;
+    text-align: center;
+    background-url('loadbg.jpg');
+}
+
+.mission {
+    height: 100%;
+    padding-top: 50px;
+    text-align: center;
+    background: #eee;
+}
+
+.usage{
+    height: 100%;
+    padding-top: 50px;
+    text-align: center;
+    background: #fff;
+}
+
+.contact{
+    height: 100%;
+    padding-top: 150px;
+    text-align: center;
+    background: #eee;
 }
