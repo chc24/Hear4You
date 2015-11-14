@@ -16,38 +16,43 @@
 
       // Check if the username is already taken
       $query = "
-            SELECT
-                1
+            SELECT 1
             FROM users
-            WHERE
-                username = :username";
-      $query_params = array( ':username' => $_POST['username'] );
+            WHERE username = :username";
+      $query_params = array(
+        ':username' => $_POST['username']
+      );
 
       try {
             $stmt = $db->prepare($query);
             $result = $stmt->execute($query_params);
-      } catch(PDOException $e){ die("Failed to run query: " . $e->getMessage()); }
+      } catch(PDOException $e){
+        die("Failed to run query: " . $e->getMessage());
+      }
+
       $row = $stmt->fetch();
-      if($row){ die("This username is already in use"); }
+      if($row){
+        die("Username is in use.");
+      }
 
       //check if email is already taken
       $query = "
-            SELECT
-                1
+            SELECT 1
             FROM users
-            WHERE
-                email = :email ";
-
+            WHERE email = :email ";
       $query_params = array(
             ':email' => $_POST['email'] );
       try {
             $stmt = $db->prepare($query);
             $result = $stmt->execute($query_params);
+      } catch(PDOException $e){
+        die("Failed to run query: " . $e->getMessage());
       }
-      catch(PDOException $e){ die("Failed to run query: " . $e->getMessage());}
-      $row = $stmt->fetch();
-      if($row){ die("This email address is already registered"); }
 
+      $row = $stmt->fetch();
+      if($row){
+        die("Email address is in use.");
+      }
 
       // add user into db
       $query = "
@@ -77,7 +82,7 @@
         ':salt' => $salt,
       );
 
-      print_r($query_params);
+      //print_r($query_params);
 
       try {
         $stmt = $db->prepare($query);
@@ -89,7 +94,6 @@
         die("query failed: " . $e->getMessage());
       }
 
-      //header("Location: login.html");
-      //die("Redirecting to login.html");
+      header("Location: login.html");
     }
 ?>

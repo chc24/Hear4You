@@ -6,7 +6,6 @@
   if(!empty($_POST)){
     $query = "
               SELECT
-                  uid,
                   username,
                   password,
                   salt,
@@ -18,7 +17,7 @@
         ':email' => $_POST['email']
     );
 
-    try{ 
+    try{
             $stmt = $db->prepare($query);
             $result = $stmt->execute($query_params);
     } catch(PDOException $ex){
