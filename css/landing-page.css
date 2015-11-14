@@ -1,9 +1,3 @@
-/*!
- * Start Bootstrap - Landing Page Bootstrap Theme (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-
 body,
 html {
     width: 100%;
@@ -22,11 +16,11 @@ h6 {
 }
 
 .topnav {
-    font-size: 14px; 
+    font-size: 18px; 
 }
 
 .lead {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
 }
 
