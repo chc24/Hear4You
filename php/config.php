@@ -10,6 +10,5 @@
       die("Failed to connect to the database: " . $e->getMessage());
     }
 
-    header('Content-Type: text/html; charset=utf-8');
     session_start();
 ?>
