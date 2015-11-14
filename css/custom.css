@@ -40,3 +40,18 @@ div .panel-default{
     .btn-facebook.active {
         background-color: #0d2456 \9 !important;
     }
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+.topnav {
+    font-size: 18px; 
+}
