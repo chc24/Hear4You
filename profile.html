@@ -10,8 +10,9 @@
     <title>Hear4You</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="css/profile.css">
 </head>
 
 <body>
@@ -31,36 +32,39 @@
                     <li><a href="index.html#mission">Mission</a></li>
                     <li><a href="index.html#roles">Roles</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li class="active"><a href="login.html">Login</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-
+	
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
+            <div class="panel panel-default LoginForm">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Select your role</h3>
+                    <h3 class="panel-title">My Profile</h3>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group last">
-                            <div class="col-sm-offset-2 col-sm-9">
-                                <button type="submit" class="btn btn-default btn-sm sign">Speaker</button>
-                                <button type="submit" class="btn btn-default btn-sm">Listener</button>
-                                <input type="button" value = "Group Chat" class="btn btn-default btn-sm" onclick="location.href='groupchat.html';"></input>
-                                </div>
-                            </div>
-                            <p>Unsure on your role? Learn more <a href="index.html#roles">here.</a></p>
-                        </div>
-                    </form>
+                <h3>Username | Member </h3>
+                <p> Email: </br>
+                Member Since: </br>
+                Last Login: </br></p>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  $(".sign").click(function(){
+    $(".LoginForm").fadeOut(500);
+    $(".RegisterForm").fadeIn(500);
+  });
+});
+</script>
 
 </body>
 </html>
