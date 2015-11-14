@@ -1,7 +1,8 @@
 <?php
-  require_once("config.php");
-
-  session_start();
+  require("config.php");
+  if (session_id() == "") {
+    session_start();
+  }
   if(!empty($_POST)){
     $query = "
               SELECT
@@ -17,8 +18,15 @@
         ':email' => $_POST['email']
     );
 
-    $query_result = mysql_query($query);
+    try{ 
+            $stmt = $db->prepare($query);
+            $result = $stmt->execute($query_params);
+    } catch(PDOException $ex){
+      die("Failed to run query: " . $ex->getMessage());
+    }
 
+    $query_result = mysql_query($query);
+    print_r($query_result);
     $num_row = mysql_num_rows($query_result);
     $row = mysql_fetch_assoc($query_result);
 
