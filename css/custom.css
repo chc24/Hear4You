@@ -75,6 +75,13 @@ body {
   font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
+#messages {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 500px;
+}
+
 .panel-default{
   width: 100%;
   position: absolute;
