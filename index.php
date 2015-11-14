@@ -32,11 +32,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#home">Home</a> </li>
-                    <li><a href="#mission">Mission</a></li>
-                    <li><a href="#roles">Roles</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="login.html">Login</a></li>
+                <?php include('includes/nav.php'); ?>
                 </ul>
             </div>
         </div>
@@ -134,10 +130,6 @@
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
                             <a href="#contact">Contact</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="login.html">Login</a>
                         </li>
                     </ul>
                     <p class="copyright text-muted small">Copyright &copy; Hear4You 2015. All Rights Reserved</p>

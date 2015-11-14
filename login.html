@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Hear4You</title>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hear4You</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/landing-page.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -11,43 +20,27 @@
 </head>
 
 <body>
-    <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
+    <nav id = "myScrollspy" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
-                    <img src="cloud.png"; style = "max-width:71px";>
-                </a>
+                <a class="navbar-brand topnav" href="#">Hear4You</a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="nav-bar-content">
-                <ul class="nav navbar-nav navbar-left">
-                    
-                    <li>
-                        <a href="index.html">Hear4You</a>
-                    </li>
-                    <li>
-                        <a href="#">Mission</a>
-                    </li>
-                    <li><a href="#">About</a>
-                    </li>
-    
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#home">Home</a> </li>
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#roles">Roles</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
                 </ul>
-                <ul class = "nav navbar-nav navbar-right btn-group">
-                    <li><a href = "login.html">Login</a></li>
-                  <li id = "Contact_ID"><a href="Contact.html">Contact</a>
-
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container -->
     </nav>
 	<div class="container">
     <div class="row">
@@ -56,17 +49,17 @@
                 <div class="panel-heading"> <strong class="">Login</strong>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" role="form" action = "checklogin.php" method = "POST">
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                            <label for="myusername" class="col-sm-3 control-label">Email</label>
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email" required="">
+                                <input type="email" class="form-control" id="myusername" placeholder="Email" required="">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                            <label for="mypassword" class="col-sm-3 control-label">Password</label>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required="">
+                                <input type="password" class="form-control" id="mypassword" placeholder="Password" required="">
                             </div>
                         </div>
                         <div class="form-group">
@@ -109,18 +102,17 @@
         </div>
     </div>
 </div>
+</body>
+
+</html>
 
 <script>
 
 $(document).ready(function(){
   $(".sign").click(function(){
- 	$(".LoginForm").fadeOut(500);
- 	$(".RoleForm").fadeIn(500);
+    $(".LoginForm").fadeOut(500);
+    $(".RoleForm").fadeIn(500);
   });
 });
 
 </script>
-
-</body>
-
-</html>
