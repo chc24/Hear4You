@@ -1,4 +1,7 @@
-<?php 
-session_start();
-session_destroy();
+<?php
+    require("config.php");
+    unset($_SESSION['user']);
+    header("Location: index.php");
+    die("Redirecting to: index.php");
+    session_destroy();
 ?>

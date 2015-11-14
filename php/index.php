@@ -1,3 +1,10 @@
+<?php
+include('login.php');
+if(isset($_SESSION['user'])) {
+	header("location: profile.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,9 +56,9 @@
                         <h1>Hear4You</h1>
                         <h3>An online platform to facilitate healthy conversations about mental health, awareness, and wellbeing</h3>
                         <hr class="intro-divider">
-                         
+
                                 <a href="#mission" class="btn btn-default btn-lg"><span class="network-name">Learn More</span></a>
-                            
+
                     </div>
                 </div>
             </div>
@@ -85,7 +92,7 @@
         <div class="container">
 
             <div class="row">
-            
+
 
                 <div class=".col-sm-5 .col-md-6">
                     <h2 id="roleHeading" class="section-heading">Roles</h2>
@@ -107,7 +114,7 @@
                     <br><br>
                     If you have experience in certain issues, please enter those in your profile so we can better match individuals with those problems.</p>
                 </div>
-            
+
 
         </div>
     </div>
