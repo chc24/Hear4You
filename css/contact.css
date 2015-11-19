@@ -21,3 +21,46 @@ h6 {
 .topnav {
     font-size: 18px; 
 }
+
+.Dennis{
+margin-top: 10px;
+margin-bottom: 10px;
+margin-left: 60px;
+width: 15em;
+height: 15em;
+border-radius: 8.75em;
+background: url('../img/Dennis.jpg') no-repeat;
+background-position: 47.5% 35%;
+border: 5px solid #000000;
+box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+.Calvin{
+margin-top: 10px;
+margin-bottom: 10px;
+margin-left: 60px;
+width: 15em;
+height: 15em;
+border-radius: 8.75em;
+background: url('../img/Calvin.jpg') no-repeat;
+background-position: 50% 15%;
+border: 5px solid #000000;
+box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+.Adam{
+margin-top: 10px;
+margin-bottom: 10px;
+margin-left: 60px;
+width: 15em;
+height: 15em;
+border-radius: 8.75em;
+background: url('../img/Adam.jpg') no-repeat;
+background-position: 60% 0%;
+border: 5px solid #000000;
+box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+.btn-default{
+	margin-bottom: 10px;
+}
