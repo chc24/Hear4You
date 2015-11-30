@@ -1,21 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html> <html lang="en"> <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Hear4You</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/profile.css">
-</head>
-
-<body>
+	<script>
+		$(document).ready(function() {
+			$.ajax({
+				type: "POST",
+				url: "php/profile.php",
+				success: function(data) {
+					$("#data-hold").html(data);
+				}
+			})
+		});
+	</script> </head> <body>
     <nav id = "myScrollspy" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
             <div class="navbar-header">
@@ -45,26 +50,15 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">My Profile</h3>
                 </div>
-                <div class="panel-body">
-                <h3>Username | Member </h3>
-                <p> Email: </br>
-                Member Since: </br>
-                Last Login: </br></p>
+                <div class="panel-body" id="data-hold">
                 </div>
             </div>
-
         </div>
-    </div>
-</div>
-
-<script>
-$(document).ready(function(){
+    </div> </div> <script> $(document).ready(function(){
   $(".sign").click(function(){
     $(".LoginForm").fadeOut(500);
     $(".RegisterForm").fadeIn(500);
   });
 });
-</script>
-
-</body>
+</script> </body>
 </html>
