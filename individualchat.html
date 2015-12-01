@@ -51,7 +51,7 @@
    <!--  <input type='text' id='nameInput' placeholder='Name'> -->
     <input type='text' id='messageInput' placeholder='Enter your message here'>
     <script>
-      var username = <?php echo $_SESSION["username"];?>
+      var username = <?php echo $_SESSION["username"];?>;
       var myDataRef = new Firebase('hear4you.firebaseIO.com');
       var chatroomRef = myDataRef.child("IndividualChats");
       var pairRef = chatroomRef.child(username)

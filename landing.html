@@ -52,12 +52,12 @@
                     <h3 class="panel-title">Select your role</h3>
                 </div>
                 <div class="panel-body text-center">
-                    <form class="form-horizontal" role="form">
+                    <form method="post" action="php/update.php" class="form-horizontal" role="form">
                         <div class="form-group last">
                             <div class="col-sm-offset-2 col-sm-9">
-                                <button type="submit" class="btn btn-default btn-sm sign">Speaker</button>
-                                <button type="submit" class="btn btn-default btn-sm">Listener</button>
-                                <input type="button" value = "Group Chat" class="btn btn-default btn-sm" onclick="location.href='groupchat.html';"></input>
+                                <input type="submit" value="Speaker"class="btn btn-default btn-sm sign" onclick="location.href='groupchat.html';" name="speaker"></input>
+                                <input type="submit" value="Listener" class="btn btn-default btn-sm" onclick="location.href='.html';" name="listener"></input>
+                                <input type="button" value = "Group Chat" class="btn btn-default btn-sm" onclick="location.href='groupchat.html';" name="group"></input>
                                 </div>
                             </div>
                             <p>Unsure on your role? Learn more <a href="index.html#roles">here.</a></p>
