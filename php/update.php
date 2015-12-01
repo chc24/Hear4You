@@ -13,8 +13,8 @@ if(isset($_SESSION['username'])) {
       if (!empty($_POST['listener'])) {
       	$role = $_POST['listener'];
       }
-      if (!empty($_POST['groupchat'])) {
-      	$role = $_POST['groupie'];
+      if (!empty($_POST['group'])) {
+      	$role = $_POST['group'];
       }
 
       // Check if the username is assigned to role
@@ -71,9 +71,6 @@ if(isset($_SESSION['username'])) {
 	      try {
 	        $stmt = $db->prepare($query);
 	        $result = $stmt->execute($query_params);
-	        if ($result) {
-	          echo "online user added";
-	        }
 	      } catch(PDOException $e){
 	        die("query failed: " . $e->getMessage());
 	      }
