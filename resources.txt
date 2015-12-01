@@ -1,0 +1,9 @@
+Title	URL
+Wellness Center	https://studentaffairs.duke.edu/duwell/contact-us
+Student Health	https://studentaffairs.duke.edu/studenthealth
+CAPS Website	https://studentaffairs.duke.edu/caps
+CAPS Facebook	https://www.facebook.com/Duke-University-CAPS-257367381584/
+Duke NAMI	https://www.facebook.com/dukenami/
+Workshops and Discussions https://studentaffairs.duke.edu/caps/workshops-and-discussions
+Women's Center https://studentaffairs.duke.edu/wc
+Event Calendar	https://duke.collegiatelink.net/organization/caps/events?onlyCurrent=False
