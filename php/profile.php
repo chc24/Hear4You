@@ -12,8 +12,6 @@
 				//Echo results
 				echo "<h3>" .$userName. " | Member</h3>";
 				echo "<p>Email: " .$assoc[0]['email']. " </br>";
-				echo "Member Since: not implemented yet</br>
-				      Last Login: not implement yet</br></p>";
 			} else {
 				echo "<h3> Error fetching data for profile. Session: ".$_SESSION['user']."</h3>";
                                 echo "<pre>"; 

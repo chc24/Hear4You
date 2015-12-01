@@ -41,17 +41,17 @@ if($_SESSION['logged_in'] == false) {
 					//$_SESSION['uid'] = $row['uid'];
 					header("Location: ../landing.html");
 				} else {
-					echo "Login failure: could not find that username/pass";
+					header("Location: ../loginfail.html");
 				}
 			} else {
-				echo "Login failure: could not find that username/pass";
+				header("Location: ../loginfail.html");
 			}
 		}
     } else {
         echo "No POST vars defined";
     }
 } else {
-    echo "You're already logged in. <a href='logout.php'>Logout</a>";
+    header("Location: ../logout.html");
 }
 
 ?>
