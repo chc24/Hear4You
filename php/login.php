@@ -1,55 +1,57 @@
 <?php
-  require("config.php");
-  if (session_id() == "") {
-    session_start();
-  }
-  if(!empty($_POST)){
-    $query = "
-              SELECT
-                  username,
-                  password,
-                  salt,
-                  email
-              FROM users
-              WHERE email=:email";
+require("config.php");
+session_start();
 
-    $query_params = array(
-        ':email' => $_POST['email']
-    );
-
-    try{
-            $stmt = $db->prepare($query);
-            $result = $stmt->execute($query_params);
-    } catch(PDOException $ex){
-      die("Failed to run query: " . $ex->getMessage());
-    }
-
-    $query_result = mysql_query($query);
-    print_r($query_result);
-    $num_row = mysql_num_rows($query_result);
-    $row = mysql_fetch_assoc($query_result);
-
-    $login_valid = false;
-
-    if($num_row == 1) {
-      echo 'true';
-      $check_password = hash('sha256', $_POST['password'] . $row['salt']);
-      for($round = 0; $round < 65536; $round++){
-          $check_password = hash('sha256', $check_password . $row['salt']);
-      }
-      if($check_password === $row['password']){
-          $login_valid = true;
-      }
-    }
-
-    if ($login_valid = true) {
-      unset($row['salt']);
-      unset($row['password']);
-      $_SESSION['user'] = $row;
-      //$_SESSION['username'] = $row['username'];
-      //$_SESSION['uid'] = $row['uid'];
+if($_SESSION['logged_in'] == false) {
+    if(!empty($_POST)) {
+        $query = "
+                SELECT
+                    username,
+                    password,
+                    salt,
+                    email
+                FROM users
+                WHERE email=:email";
+        
+        $query_params = array(
+            ':email' => $_POST['email']
+        );
+        
+        $stmt   = $db->prepare($query);
+        $result = $stmt->execute($query_params);
+        
+		$login_valid = false;
+		$num_row     = 0;
+		
+        if($result) {
+			$num_row = $stmt->rowCount();
+			if($num_row >= 1) {
+				$row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				$check_password = hash('sha256', $_POST['password'] . $row[0]['salt']);
+				for($round = 0; $round < 65536; $round++) {
+					$check_password = hash('sha256', $check_password . $row[0]['salt']);
+				}
+				
+				if($check_password == $row[0]['password']) {
+					unset($row['salt']);
+					unset($row['password']);
+					//$_SESSION['user'] = $row['username'];
+					$_SESSION['logged_in'] = true;
+					$_SESSION['username'] = $row[0]['username'];
+					//$_SESSION['uid'] = $row['uid'];
+					header("Location: ../landing.html");
+				} else {
+					echo "Login failure: could not find that username/pass";
+				}
+			} else {
+				echo "Login failure: could not find that username/pass";
+			}
+		}
     } else {
-      echo 'login failed';
+        echo "No POST vars defined";
     }
+} else {
+    echo "You're already logged in. <a href='logout.php'>Logout</a>";
+}
 
 ?>
