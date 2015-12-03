@@ -53,8 +53,12 @@
    <!--  <input type='text' id='nameInput' placeholder='Name'> -->
     <input type='text' id='messageInput' placeholder='Enter your message here'>
     <script>
+      var colors = ["Red", "Green", "Orange", "Blue", "Yellow", "Pink"];
+      var animals = ["Armadillo", "Crocodile", "Bear", "T-Rex", "Elephant"];
+      var name = colors[Math.floor(Math.random() * colors.length)] + " " + animals[Math.floor(Math.random() * animals.length)];
+
       var myDataRef = new Firebase('hear4you.firebaseIO.com');
-      var chatroomRef = myDataRef.child("PublicGroups")
+      var chatroomRef = myDataRef.child("Group-Chat");
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
           // var name = $('#nameInput').val();
