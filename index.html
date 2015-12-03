@@ -13,11 +13,22 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/landing-page.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			$.ajax({
+				type: "POST",
+				url: "php/swaphome.php",
+				success: function(data) {
+					$("#swap-login").html(data);
+				}
+			})
+		});
+	</script>
 </head>
 
-<body data-spy="scroll" data-target="#myScrollspy" data-offset="0">
-
+<body>
     <nav id = "myScrollspy" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
             <div class="navbar-header">
@@ -27,20 +38,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">Hear4You</a>
+                <a class="navbar-brand topnav" href="index.html">Hear4You</a>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#mission">Mission</a></li>
-                    <li><a href="#roles">Roles</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
+            <div class="collapse navbar-collapse" id="swap-login">
             </div>
         </div>
     </nav>
-
 
     <a name="home"></a>
     <div id="home" class="intro-header">

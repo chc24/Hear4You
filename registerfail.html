@@ -28,6 +28,10 @@
 </head>
 
 <body>
+
+<div id="status">
+</div>
+
     <nav id = "myScrollspy" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
             <div class="navbar-header">
@@ -53,7 +57,7 @@
                 </div>
                 <div class="panel-body">
                     <form action = "php/login.php" method = "POST">
-                    <p>Error: Could not locate that username/password.</p>
+                    <p>Error: Email or username already in use.</p>
                     <fieldset>
                         <div class="form-group">
                             <input class="form-control" placeholder="Email" name="email" type="text">

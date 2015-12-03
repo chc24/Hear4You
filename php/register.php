@@ -32,7 +32,7 @@
 
       $row = $stmt->fetch();
       if($row){
-        die("Username is in use.");
+        header("Location: ../registerfail.html");
       }
 
       //check if email is already taken
@@ -51,7 +51,7 @@
 
       $row = $stmt->fetch();
       if($row){
-        die("Email address is in use.");
+        header("Location: ../registerfail.html");
       }
 
       // add user into db

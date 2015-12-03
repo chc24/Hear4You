@@ -18,7 +18,15 @@
 				success: function(data) {
 					$("#data-hold").html(data);
 				}
-			})
+			});
+			
+			$.ajax({
+				type: "POST",
+				url: "php/swapuser.php",
+				success: function(data) {
+					$("#swap-login").html(data);
+				}
+			});
 		});
 	</script> </head> <body>
     <nav id = "myScrollspy" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
@@ -32,14 +40,7 @@
                 </button>
                 <a class="navbar-brand topnav" href="index.html">Hear4You</a>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#mission">Mission</a></li>
-                    <li><a href="#roles">Roles</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
+            <div class="collapse navbar-collapse" id="swap-login">
             </div>
         </div>
     </nav>
