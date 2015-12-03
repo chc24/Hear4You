@@ -46,29 +46,37 @@
 
 
   <div class = "jumbotron" id = "messages">
-
+  <h2 id = "groupName">Obesity</h2>
     <div id='messagesDiv'>
 
     </div>
    <!--  <input type='text' id='nameInput' placeholder='Name'> -->
     <input type='text' id='messageInput' placeholder='Enter your message here'>
     <script>
+      var colors = ["Red", "Green", "Orange", "Blue", "Yellow", "Pink", "Purple", "Teal", "Periwinkle", "Crimson"];
+      var animals = ["Armadillo", "Crocodile", "Bear", "T-Rex", "Elephant", "Puppy", "Alligator"];
+      var name = colors[Math.floor(Math.random() * colors.length)] + " " + animals[Math.floor(Math.random() * animals.length)];
+
+      var chatroom = document.getElementsByTagName("h2");
+      var chatroomName = chatroom[0].innerHTML;
+
       var myDataRef = new Firebase('hear4you.firebaseIO.com');
-      var chatroomRef = myDataRef.child("PublicGroups")
+      var chatroomRef = myDataRef.child("Group-Chat");
+      var groupRef = chatroomRef.child(chatroomName);
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
           // var name = $('#nameInput').val();
           var text = $('#messageInput').val();
-          chatroomRef.push({name: name, text: text});
+          groupRef.push({name: name, text: text});
           $('#messageInput').val('');
         }
       });
-      chatroomRef.on('child_added', function(snapshot) {
+      groupRef.on('child_added', function(snapshot) {
         var message = snapshot.val();
         displayChatMessage(message.name, message.text);
       });
       function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('<div/>').text(text).prepend($('<em class="message"/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
     </script>
