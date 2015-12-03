@@ -51,13 +51,11 @@
             oneChar = false;
         }
         if(filter) {
-            isCurrentlyTyping = true;
             $(list).find("p:not(:Contains(" + filter + "))").parent().slideUp();
             $(list).find("p:Contains(" + filter + ")").parent().slideDown();
             $('.collapsed').addClass('expanded');
             $('.collapsed').children().show('medium');
         } else {
-            isCurrentlyTyping = false;
           $(list).find("li").slideDown();
           $('.expanded').removeClass('collapsed');
           $('.expanded').children().hide('medium');
@@ -173,12 +171,15 @@ $(function prepareList() {
                                 <p class="indent">
                                     &bull; <a href="https://studentaffairs.duke.edu/duwell/contact-us">Website</a><br/>
                                     &bull; The Student Wellness Center (DUWELL) helps students focus on their individual Wellness by looking at the integration of many areas of their life, including financial, social, spiritual, intellectual, mind-body well-being, and the environment around them.
+                                    <font class="hidden">screening anonymous confidential spiritual spirit wellbeing</font>
                                 </p>
+                                
                             </li>
                             <li>Peer4You
                                 <p class="indent">
                                     &bull; <a href="https://peerforyou.org/">Website</a><br/>
-                                    &bull; The mission of Peer for You is to make it easy for any Duke student to reach out and find what they need in a time of mental struggle.” Allows students to anonymously message a CAPS trained student at any time, about anything. 
+                                    &bull; The mission of Peer for You is to make it easy for any Duke student to reach out and find what they need in a time of mental struggle. Allows students to anonymously message a CAPS trained student at any time, about anything.
+                                    <font class="hidden">anxious anxiety depressed depression suicidal suicide eating disorder insomnia uncomfort stress</font>
                                 </p>
                             </li>
                             <li>Student Health
@@ -192,6 +193,7 @@ $(function prepareList() {
                                     &bull; <a href="https://studentaffairs.duke.edu/caps">CAPS Website</a><br/>
                                     &bull; <a href="https://www.facebook.com/Duke-University-CAPS-257367381584/">CAPS Facebook</a><br/>
                                     &bull; Phone number: 919-660-1000
+                                    <font class="hidden">anxiety anxious depressed depression suicidal suicide eating disorder insomnia uncomfort stress</font>
                                 </p>
                             </li>
                             <li>NAMI (National Alliance on Mental Illness)
@@ -201,12 +203,14 @@ $(function prepareList() {
                                 <li>Workshops and Discussions
                                     <p class="indent">
                                         &bull; <a href="https://studentaffairs.duke.edu/caps/workshops-and-discussions">Website</a>
+                                    <font class="hidden">anxiety anxious depressed depression suicidal suicide eating disorder insomnia uncomfort stress</font>
                                     </p>
                                 </li>
                                 <li>Department of Psychiatry and Behavioral Sciences at Duke University Medical Center
                                     <p class="indent">
                                         &bull; The Department of Psychiatry and Behavioral Sciences at Duke University Medical Center- provides a wide range of professional services to the psychiatric population ranging from specialized clinics such as Behavioral Medicine, ECT, and DAP to outpatient programs.<br/>
                                         &bull; <a href="http://psychiatry.duke.edu/patient-care/adult-services">Website</a>
+                                        <font class="hidden">screening service clinical trial</font>
                                     </p>
                                 </li>
                                 <li>Women's Center
@@ -214,17 +218,20 @@ $(function prepareList() {
                                         &bull; Confidential counseling, advocacy and information for all genders.<br/>
                                         &bull; <a href="https://studentaffairs.duke.edu/wc">Women's Center</a><br/>
                                         &bull; Email: <a href="mailto:womenctr@duke.edu">womenctr@duke.edu</a>
+                                        <font class="hidden">counseling woman</font>
                                     </p>
                                 </li>
                                 <li>Event Calendar
                                     <p class="indent">
                                         &bull; <a href="https://duke.collegiatelink.net/organization/caps/events?onlyCurrent=False">Website</a>
+                                        <font class="hidden">events meetups meet-up</font>
                                     </p>
                                 </li>
                                 <li>Duke Reach
                                     <p class="indent">
                                         &bull; <a href="https://studentaffairs.duke.edu/dukereach1">Website</a><br/>
                                         &bull; Vision: To serve the Duke community by coordinating support efforts both on and off campus in order to assist students facing challenges, stressors, and barriers that impede academic and personal success.<br/>
+                                        <font class="hidden">schedule reschedule final exam meetings</font>
                                     </p>
                                 </li>
                                 <li>Office of Diversity and Inclusion
@@ -238,51 +245,6 @@ $(function prepareList() {
                                         &bull; <a href="http://psychandneuro.duke.edu/graduate/clinical/clinic">Website</a>
                                     </p>
                                 </li>
-                                <br/>
-                                <u>LGBTQ Resources:</u><br/>
-                                <li>Center for Sexual and Gender Diversity
-                                    <p class="indent">
-                                        &bull; <a href="https://studentaffairs.duke.edu/csgd">CSGD Website</a><br/>
-                                        Email CSGD: <a href="mailto:csgd@studentaffairs.duke.edu">csgd@studentaffairs.duke.edu</a><br/>
-                                        Phone number: 919-684-6607
-                                    </p>
-                                </li>
-                                <li>LGBTQ Network
-                                    <p class="indent">
-                                        &bull; The Duke LGBTQ Network is an organization dedicated to serving the lesbian, gay, bisexual, transgender, and queer (LGBTQ) community of the University. The Network welcomes alumni, students, faculty, staff, and friends of Duke.<br/>
-                                        &bull; <a href="http://sites.duke.edu/dukelgbtnetwork/">Website</a><br/>
-                                        &bull; <a href="https://www.facebook.com/groups/dukelgbtnetwork/">Facebook Page</a>
-                                    </p>
-                                </li>
-                                <li>Blue Devils United
-                                    <p class="indent">
-                                        &bull; BDU is Duke's undergraduate student group for promoting inclusivity of sexual and gender diversity.<br/>
-                                        &bull; <a href="http://www.bluedevilsunited.com/">Website</a><br/>
-                                        &bull; <a href="https://www.facebook.com/bluedevilsunited/?fref=ts">Facebook Page</a>
-                                    </p>
-                                </li>
-                                <li>Athlete Allys
-                                    <p class="indent">
-                                        &bull; We pledge to create a culture of inclusion in the athletic community @ Duke by advocating for respect for athletes, fans, coaches, and staff of all identities.<br/>
-                                        <a href="https://www.facebook.com/DukeAthleteAlly?fref=ts">Facebook page</a>
-                                    </p>
-                                </li>
-                                <li>Duke Nursing GSA (DUSON Spectrum)
-                                    <p class="indent">
-                                        <a href="https://www.facebook.com/groups/498950670166671/">Facebook Page</a>
-                                    </p>
-                                </li>
-                                <li>DukeMed Pride
-                                    <p class="indent">
-                                        &bull; DukeMed Pride is a student-led group consisting of LGBTQ and allied students within the Duke University School of Medicine. DukeMed Pride works to address the healthcare issues of sexual and gender diverse peoples with a cohesive and holistic approach.<br/>
-                                        <a href="http://sites.duke.edu/dukemedpride/">Website</a>
-                                    </p>
-                                </li>
-                                <li>Duke Outlaw
-                                    <p class="indent">
-                                    &bull; LGBT/Q at Duke University School of Law<br/>
-                                    &bull; <a href="http://sites.duke.edu/outlaw/">Website</a>
-                                </li>
                                 <li>Gender Violence Prevention and Intervention</a>
                                     <p class="indent">
                                     &bull; Phone number: 919-684-3897
@@ -291,6 +253,59 @@ $(function prepareList() {
                                     <p class="indent">
                                     &bull; Phone number: 919-970-4169
                                 </li>
+                                <br/>
+                                <u>LGBTQ Resources:</u><br/>
+                                <li>Center for Sexual and Gender Diversity
+                                    <p class="indent">
+                                        &bull; <a href="https://studentaffairs.duke.edu/csgd">CSGD Website</a><br/>
+                                        Email CSGD: <a href="mailto:csgd@studentaffairs.duke.edu">csgd@studentaffairs.duke.edu</a><br/>
+                                        Phone number: 919-684-6607
+                                        <font class="hidden">gay lesbian trans transgender gender diversity sexual orientation questioning lgbt lgbtq lgbt+ lgbtq+ asexual queer pansexual pan straight</font>
+                                    </p>
+                                </li>
+                                <li>LGBTQ Network
+                                    <p class="indent">
+                                        &bull; The Duke LGBTQ Network is an organization dedicated to serving the lesbian, gay, bisexual, transgender, and queer (LGBTQ) community of the University. The Network welcomes alumni, students, faculty, staff, and friends of Duke.<br/>
+                                        &bull; <a href="http://sites.duke.edu/dukelgbtnetwork/">Website</a><br/>
+                                        &bull; <a href="https://www.facebook.com/groups/dukelgbtnetwork/">Facebook Page</a>
+                                        <font class="hidden">gay lesbian trans transgender gender diversity sexual orientation questioning lgbt lgbtq lgbt+ lgbtq+ asexual queer pansexual pan straight</font>
+                                    </p>
+                                </li>
+                                <li>Blue Devils United
+                                    <p class="indent">
+                                        &bull; BDU is Duke's undergraduate student group for promoting inclusivity of sexual and gender diversity.<br/>
+                                        &bull; <a href="http://www.bluedevilsunited.com/">Website</a><br/>
+                                        &bull; <a href="https://www.facebook.com/bluedevilsunited/?fref=ts">Facebook Page</a>
+                                        <font class="hidden">gay lesbian trans transgender gender diversity sexual orientation questioning lgbt lgbtq lgbt+ lgbtq+ asexual queer pansexual pan straight</font>
+                                    </p>
+                                </li>
+                                <li>Athlete Allys
+                                    <p class="indent">
+                                        &bull; We pledge to create a culture of inclusion in the athletic community @ Duke by advocating for respect for athletes, fans, coaches, and staff of all identities.<br/>
+                                        <a href="https://www.facebook.com/DukeAthleteAlly?fref=ts">Facebook page</a>
+                                        <font class="hidden">gay lesbian trans transgender gender diversity sexual orientation questioning lgbt lgbtq lgbt+ lgbtq+ asexual queer pansexual pan straight</font>
+                                    </p>
+                                </li>
+                                <li>Duke Nursing GSA (DUSON Spectrum)
+                                    <p class="indent">
+                                        <a href="https://www.facebook.com/groups/498950670166671/">Facebook Page</a>
+                                        <font class="hidden">gay lesbian trans transgender gender diversity sexual orientation questioning lgbt lgbtq lgbt+ lgbtq+ asexual queer pansexual pan straight</font>
+                                    </p>
+                                </li>
+                                <li>DukeMed Pride
+                                    <p class="indent">
+                                        &bull; DukeMed Pride is a student-led group consisting of LGBTQ and allied students within the Duke University School of Medicine. DukeMed Pride works to address the healthcare issues of sexual and gender diverse peoples with a cohesive and holistic approach.<br/>
+                                        <a href="http://sites.duke.edu/dukemedpride/">Website</a>
+                                        <font class="hidden">gay lesbian trans transgender gender diversity sexual orientation questioning lgbt lgbtq lgbt+ lgbtq+ asexual queer pansexual pan straight</font>
+                                    </p>
+                                </li>
+                                <li>Duke Outlaw
+                                    <p class="indent">
+                                    &bull; LGBT/Q at Duke University School of Law.<br/>
+                                    &bull; <a href="http://sites.duke.edu/outlaw/">Website</a>
+                                    <font class="hidden">gay lesbian trans transgender gender diversity sexual orientation questioning lgbt lgbtq lgbt+ lgbtq+ asexual queer pansexual pan straight</font>
+                                </li>
+
                                 <br/>
                                 <u>Campaigns:</u>
                                 <li>Me Too Campaign
@@ -310,7 +325,7 @@ $(function prepareList() {
                                 </li>
                                 <li>To Write Love on Her Arms
                                     <p class="indent">
-                                        &bull; “Passionate, supportive community of students that use art and music as platforms to promote open and honest conversation about topics such as mental health, struggle, and the power of vulnerability.” Plan on open-mic night and annual concert.<br/>
+                                        &bull; Passionate, supportive community of students that use art and music as platforms to promote open and honest conversation about topics such as mental health, struggle, and the power of vulnerability. Plan an open-mic night and annual concert.<br/>
                                         &bull; <a href="https://www.facebook.com/twlohaduke/">Website</a>
                                     </p>
                                 </li>
