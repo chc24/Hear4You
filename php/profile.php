@@ -11,7 +11,15 @@
 			if(sizeof($assoc) > 0) {
 				//Echo results
 				echo "<h3>" .$userName. " | Member</h3>";
-				echo "<p>Email: " .$assoc[0]['email']. " </br>";
+				echo "<p>Email: " .$assoc[0]['email']. " <br/><br/>";
+				echo '<form action = "php/logout.php" method = "POST">
+                    <fieldset>
+                        <a class="btn btn-lg btn-success btn-block sign" href="landing.html">Start Chatting</a>
+                    </fieldset>
+                    </form>
+                    <center><h4>OR</h4></center>
+                    <input class="btn btn-lg btn-danger btn-block" type="submit" value="Logout">
+                    ';
 			} else {
 				echo "<h3> Error fetching data for profile. Session: ".$_SESSION['user']."</h3>";
                                 echo "<pre>"; 
@@ -21,6 +29,5 @@
 		}
 	} else {
 		header("Location: ../index.html");
-	}
-    
+	}  
 ?>
