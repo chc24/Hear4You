@@ -1,3 +1,15 @@
+<!--
+SOURCES, ATTRIBUTIONS, WHO DID WHAT:
+Adam: Created page (Bootstrap implementation), implemented and modified expandable list for expansions and collapsing of resources, implemented list filtering, added descriptions/website links/resource data, implemented hidden search filters for more in-depth filtering
+Calvin/Adam: Worked on edge cases with expansion/collapsing/filtering data through search
+
+Sources Used: Bootstrap, Jquery, ajax (Placed inline)
+Online tutorials (Placed inline)
+List filter: http://kilianvalkhof.com/2010/javascript/how-to-build-a-fast-simple-list-filter-with-jquery/
+Hiding content: http://www.cssportal.com/css3-preview/showing-and-hiding-content-with-pure-css3.php
+Expandable List: http://jasalguero.com/ledld/development/web/expandable-list/
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,42 +37,27 @@
  })
    });
 
+//Creates list filter using tutorial http://kilianvalkhof.com/2010/javascript/how-to-build-a-fast-simple-list-filter-with-jquery/
       (function ($) {
           jQuery.expr[':'].Contains = function(a,i,m){
               return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
           };
 
-    // var isCurrentlyTyping = false;
-    var oneChar = false;
-
-  function listFilter(header, list) {
+  function listFilter(header, expList) {
     var form = $("<form>").attr({"class":"filterform","action":"#"}),
     input = $("<input>").attr({"class":"filterinput","type":"text"});
     $(form).append(input).appendTo(header);
     $(input)
     .change( function () {
         var filter = $(this).val();
-        if(filter.length==1){
-            oneChar = true;
-        }
-        if(filter.length==0 && oneChar == true){
-            $('.expanded').removeClass('collapsed');
-            $('.expanded').children().hide('medium');
-        }
-        if(filter.length>1){
-            oneChar = false;
-        }
         if(filter) {
-            $(list).find("p:not(:Contains(" + filter + "))").parent().slideUp();
-            $(list).find("p:Contains(" + filter + ")").parent().slideDown();
-            $('.collapsed').addClass('expanded');
-            $('.collapsed').children().show('medium');
+            $(expList).find("p:not(:Contains(" + filter + "))").parent().slideUp();
+            $(expList).find("p:Contains(" + filter + ")").slideDown();
         } else {
-          $(list).find("li").slideDown();
-          $('.expanded').removeClass('collapsed');
-          $('.expanded').children().hide('medium');
+          $(expList).find("p").parent().slideDown();
+           $('.collapsed').removeClass('expanded');
+        $('.collapsed').children().hide('medium');
       }
-      
       return false;
   })
     .keyup( function () {
@@ -69,49 +66,20 @@
 }
 
 $(function () {
-    listFilter($("#header"), $("#list"));
+    listFilter($("#header"), $("#expList"));
 });
 }(jQuery));
 
-function prepareList() {
-    $('#list').find('li:has(p)')
-    .click( function(event) {
-        if (this == event.target) {
+//Creates expandable list using tutorial: http://jasalguero.com/ledld/development/web/expandable-list/
+$(function prepareList() {
+    $('#expList').find('li:has(p)').unbind('click').click(function(event) {
+        if(this == event.target) {
             $(this).toggleClass('expanded');
             $(this).children('p').toggle('medium');
         }
         return false;
-    })
-    .addClass('collapsed')
-    .children('p').hide();
-};
-
-$(document).ready( function() {
-  prepareList();
-});
-
-$('#expandList')
-.unbind('click')
-.click( function() {
-    $('.collapsed').addClass('expanded');
-    $('.collapsed').children().show('medium');
-})
-$('#collapseList')
-.unbind('click')
-.click( function() {
-    $('.collapsed').removeClass('expanded');
-    $('.collapsed').children().hide('medium');
-});
-
-$(function prepareList() {
-    $('#list').find('li:has(ul)').unbind('click').click(function(event) {
-        if(this == event.target) {
-            $(this).toggleClass('expanded');
-            $(this).children('ul').toggle('medium');
-        }
-        return false;
-    }).addClass('collapsed').removeClass('expanded').children('ul').hide();
-    $('#list a').unbind('click').click(function() {
+    }).addClass('collapsed').removeClass('expanded').children('p').hide();
+    $('#expList a').unbind('click').click(function() {
         window.open($(this).attr('href'));
         return false;
     });
@@ -123,6 +91,10 @@ $(function prepareList() {
         $('.collapsed').removeClass('expanded');
         $('.collapsed').children().hide('medium');
     })
+});
+
+$(document).ready( function() {
+  prepareList();
 });
 
 </script>
@@ -165,7 +137,7 @@ $(function prepareList() {
                             <input id="collapseList" class="btn btn-lg btn-default btn-block" type="submit" value="Collapse">
                         </div>
                         <br/>
-                        <ul id="list">
+                        <ul id="expList">
                             <u>On-Campus Organizations:</u><br/>
                             <li>Wellness Center
                                 <p class="indent">

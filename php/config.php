@@ -1,3 +1,8 @@
+/*
+SOURCES, ATTRIBUTIONS, WHO DID WHAT:
+Dennis: Created script
+*/
+
 <?php
   $providers = array(
     'Facebook'

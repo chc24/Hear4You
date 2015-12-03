@@ -1,3 +1,8 @@
+/*
+SOURCES, ATTRIBUTIONS, WHO DID WHAT:
+Adam: Created file
+*/
+
 div .panel-default{
   margin-top: 90px;
 }
@@ -84,4 +89,12 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 
 #collapseList{
 	font-size: 12px;
+}
+
+#expList .collapsed{
+
+}
+
+#expList .expanded{
+
 }
