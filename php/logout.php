@@ -1,3 +1,9 @@
+/*
+SOURCES, ATTRIBUTIONS, WHO DID WHAT:
+Dennis: Created script
+Adam: Fixed session handling cases
+*/
+
 <?php
 require("config.php");
 session_start();

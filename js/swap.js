@@ -1,3 +1,8 @@
+/*
+SOURCES, ATTRIBUTIONS, WHO DID WHAT:
+Adam: Created file
+*/
+
 $(document).ready(function() {
 			$.ajax({
 				type: "GET",

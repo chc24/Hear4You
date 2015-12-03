@@ -1,3 +1,8 @@
+/*
+SOURCES, ATTRIBUTIONS, WHO DID WHAT:
+Adam: Created script
+*/
+
 <?php
     require("config.php");
 	
