@@ -31,20 +31,26 @@ li{
 	margin-bottom: 5px;
 }
 
-.list ul, li{
+#list p, li{
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	cursor: pointer;
 }
 
-.list li{
+#list li{
 	padding-left: 20px;
 }
 
-.listControl{
-	width: 100px;
-	text-align: center;
+#listControl{
+	width: 100%;
+}
+
+input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].btn-block{
+	width: 20%;
+	left: 30%;
+	display: inline-block;
+	position: relative;
 }
 
 .btn{
@@ -52,3 +58,18 @@ li{
 	margin-right: 5px;
 }
 
+#list .collapsed{
+
+}
+
+#list .expanded{
+	
+}
+
+.btn-block+.btn-block{
+	margin-top: 0px;
+}
+
+#list > li > p{
+	margin-left: 20px;
+}
