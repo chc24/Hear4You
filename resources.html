@@ -26,7 +26,6 @@
 		});
 
         (function ($) {
-  // custom css expression for a case-insensitive contains()
   jQuery.expr[':'].Contains = function(a,i,m){
       return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
   };
@@ -61,6 +60,8 @@
     });
     }(jQuery));
 	</script>
+
+    
 </head>
 
 <body>
@@ -92,6 +93,10 @@
                     <h3 id="header"class="panel-title text-center"><p id="title">Duke University Resources</p></h3>
                 </div>
                 <div class="panel-body">
+                    <div class="listControl">
+                        <input class="btn btn-lg btn-default btn-block" type="submit" value="Expand">
+                        <input class="btn btn-lg btn-default btn-block" type="submit" value="Collapse">
+                    </div>
                     <ul id="list">
                     <u>On-Campus Organizations:</u><br/>
                     <li><a href="https://studentaffairs.duke.edu/duwell/contact-us">Wellness Center</a></li>
@@ -107,9 +112,9 @@
                     <li><a href="https://studentaffairs.duke.edu/dukereach1">Duke Reach</a></li><br/>
                     
                     <u>LGBTQ Resources:</u><br/>
-                    <li><a href="http://sites.duke.edu/dukelgbtnetwork/">LGBTQ Network</a></li>
-                    <li><a href="https://studentaffairs.duke.edu/csgd">Center for Sexual and Gender Diversity (CSGD):</a></li>
+                    <li><a href="https://studentaffairs.duke.edu/csgd">Center for Sexual and Gender Diversity</a></li>
                     <li>Email CSGD: <a href="mailto:csgd@studentaffairs.duke.edu">csgd@studentaffairs.duke.edu</a></li>
+                    <li><a href="https://www.facebook.com/groups/dukelgbtnetwork/">LGBTQ Network</a></li>
                     <li><a href="http://www.bluedevilsunited.com/">Blue Devils United</a></li>
                     <li><a href="http://fuqua.campusgroups.com/pride/about/">Fuqua Pride</a></li>
                     <li><a href="https://www.facebook.com/DukeAthleteAlly?fref=ts">Athlete Allys</a></li>
@@ -117,6 +122,7 @@
                     <li><a href="http://sites.duke.edu/dukemedpride/">DukeMed Pride</a></li>
                     <li><a href="http://sites.duke.edu/outlaw/">Duke Law LGBTQ</a></li>
                     <br/><u>Phone Numbers:</u><br/>
+                    <li>CAPS: 919-660-1000</li>
                     <li>Gender Violence Prevention and Intervention</a>: 919-684-3897</li>
                     <li>Page Dean-on-Call: 919-970-4169</li>
                     <li>Center for Seuxal and Gender Diversity: 919-684-6607</li>

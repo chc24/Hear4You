@@ -30,3 +30,25 @@ li{
 .title{
 	margin-bottom: 5px;
 }
+
+.list ul, li{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+}
+
+.list li{
+	padding-left: 20px;
+}
+
+.listControl{
+	width: 100px;
+	text-align: center;
+}
+
+.btn{
+	border-radius:0;
+	margin-right: 5px;
+}
+
