@@ -1,10 +1,9 @@
+<?php
 /*
 SOURCES, ATTRIBUTIONS, WHO DID WHAT:
 Dennis: Created script, implemented login
-Adam: Fixed session handling cases
 */
 
-<?php
 require("config.php");
 require("check.php");
 

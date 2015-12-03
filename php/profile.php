@@ -1,9 +1,8 @@
+<?php
 /*
 SOURCES, ATTRIBUTIONS, WHO DID WHAT:
 Adam: Created script
 */
-
-<?php
     require("config.php");
 	
 	if($_SESSION['logged_in'] == true){

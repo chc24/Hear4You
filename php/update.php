@@ -1,9 +1,9 @@
+<?php
 /*
 SOURCES, ATTRIBUTIONS, WHO DID WHAT:
 Dennis: Created script
 */
 
-<?php
 require("config.php");
 require("check.php");
 
