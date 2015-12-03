@@ -1,5 +1,5 @@
-div .panel-default{
-  margin-top: 150px;
+div .panel-primary{
+  margin-top: 90px;
 }
 
 .contact{
@@ -33,6 +33,8 @@ background: url('../img/Dennis.jpg') no-repeat;
 background-position: 47.5% 35%;
 border: 5px solid #000000;
 box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+margin-left: auto;
+margin-right: auto;
 }
 
 .Calvin{
@@ -46,6 +48,8 @@ background: url('../img/Calvin.jpg') no-repeat;
 background-position: 50% 15%;
 border: 5px solid #000000;
 box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+margin-left: auto;
+margin-right: auto;
 }
 
 .Adam{
@@ -59,6 +63,8 @@ background: url('../img/Adam.jpg') no-repeat;
 background-position: 60% 0%;
 border: 5px solid #000000;
 box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+margin-left: auto;
+margin-right: auto;
 }
 
 .btn-default{
