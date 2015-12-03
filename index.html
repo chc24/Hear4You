@@ -29,10 +29,10 @@
 </head>
 
 <body>
-    <nav id = "myScrollspy" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -56,7 +56,7 @@
                         <h3>An online platform to facilitate healthy conversations about mental health, awareness, and wellbeing</h3>
                         <hr class="intro-divider">
 
-                                <a href="#mission" class="btn btn-default btn-lg"><span class="network-name">Learn More</span></a>
+                                <a href="#mission" class="btn btn-default btn-lg"><span>Learn More</span></a>
 
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Our Mission</h2>
-                    <p class="lead">Hear4You provides an on-demand, <b>safe</b>, and anonymous place for Duke students to discuss mental health online.<br><br>
+                    <p class="lead">Hear4You provides an <b>on-demand, safe</b>, and <b>anonymous</b> place for Duke students to discuss mental health online.<br><br>
                     You're not alone and others are here to help. After reading the <a href="#roles">roles guide,</a> sign up today using your NetID and join as a speaker or listener.<br><br>
                     Tell us what's on your mind and our matching algorithms will create a <b>secure</b> chat with someone who wants to help.<br><br>
                     Join chat rooms on moderated up-to-date topics in the Duke community. View current topics <a href="#topics">here.</a>
@@ -150,26 +150,6 @@
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-<script>
-    $("#myScrollspy ul li a[href^='#']").on('click', function(e) {
-
-   // prevent default anchor click behavior
-   e.preventDefault();
-
-   // store hash
-   var hash = this.hash;
-
-   // animate
-   $('html, body').animate({
-       scrollTop: $(hash).offset().top
-     }, 300, function(){
-
-       // when done, add hash to url
-       // (default click behaviour)
-       window.location.hash = hash;
-     });
-    });
-</script>
 
 </body>
 

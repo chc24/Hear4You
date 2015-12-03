@@ -14,58 +14,86 @@
   <link href="css/groupchat.css" rel="stylesheet">
   <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
+  <script>
+        $(document).ready(function() {
+            $.ajax({
+                type: "POST",
+                url: "php/swapuser.php",
+                success: function(data) {
+                    $("#swap-login").html(data);
+                }
+            })
+        });
+    </script>
+  
 </head>
 <body>
-  <!-- Navigation -->
   <nav id = "myScrollspy" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-    <div class="container topnav">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand topnav" href="#">Hear4You</a>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="index.html#home">Home</a> </li>
-          <li><a href="index.html#mission">Mission</a></li>
-          <li><a href="index.html#roles">Roles</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="login.html">Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+        <div class="container topnav">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#swap-login">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="index.html">Hear4You</a>
+            </div>
+            <div class="collapse navbar-collapse" id="swap-login">
+            </div>
+        </div>
+    </nav>
 
 
   <div class = "jumbotron" id = "messages">
+  <h2 id = "groupName"></h2>
+  <script>
+    function getTitle() {
+    var parameters = location.search.substring(1).split("&");
+    var temp = parameters[0].split("=");
+    var title = unescape(temp[1]);
+    return title; //Dialog with the text you put on the textbox
+  }
+    function changeTitle(title) {
+      var cleaned = title.replace("+", " ");
+      var ChatTitle = document.getElementsByTagName("h2");
+      ChatTitle[0].innerHTML = cleaned;
+    }
 
+  title = getTitle();
+  changeTitle(title);
+
+</script>
     <div id='messagesDiv'>
 
     </div>
    <!--  <input type='text' id='nameInput' placeholder='Name'> -->
     <input type='text' id='messageInput' placeholder='Enter your message here'>
     <script>
+      var colors = ["Red", "Green", "Orange", "Blue", "Yellow", "Pink", "Purple", "Teal", "Periwinkle", "Crimson"];
+      var animals = ["Armadillo", "Crocodile", "Bear", "T-Rex", "Elephant", "Puppy", "Alligator"];
+      var name = colors[Math.floor(Math.random() * colors.length)] + " " + animals[Math.floor(Math.random() * animals.length)]+" "+Math.floor(Math.random()*10000);
+
+      var chatroom = document.getElementsByTagName("h2");
+      var chatroomName = chatroom[0].innerHTML;
+
       var myDataRef = new Firebase('hear4you.firebaseIO.com');
-      var chatroomRef = myDataRef.child("PublicGroups")
+      var chatroomRef = myDataRef.child("Group-Chat");
+      var groupRef = chatroomRef.child(chatroomName);
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
           // var name = $('#nameInput').val();
           var text = $('#messageInput').val();
-          chatroomRef.push({name: name, text: text});
+          groupRef.push({name: name, text: text});
           $('#messageInput').val('');
         }
       });
-      chatroomRef.on('child_added', function(snapshot) {
+      groupRef.on('child_added', function(snapshot) {
         var message = snapshot.val();
         displayChatMessage(message.name, message.text);
       });
       function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('<div/>').text(text).prepend($('<em class="message"/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
     </script>

@@ -12,61 +12,130 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/resources.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	
-	<script>
-		$(document).ready(function() {
-			$.ajax({
-				type: "POST",
-				url: "php/swapuser.php",
-				success: function(data) {
-					$("#swap-login").html(data);
-				}
-			})
-		});
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-        (function ($) {
-  // custom css expression for a case-insensitive contains()
-  jQuery.expr[':'].Contains = function(a,i,m){
-      return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
-  };
+    <script>
+      $(document).ready(function() {
+       $.ajax({
+        type: "POST",
+        url: "php/swapuser.php",
+        success: function(data) {
+         $("#swap-login").html(data);
+     }
+ })
+   });
 
+      (function ($) {
+          jQuery.expr[':'].Contains = function(a,i,m){
+              return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+          };
 
-  function listFilter(header, list) { // header is any element, list is an unordered list
-    // create and add the filter form to the header
+    // var isCurrentlyTyping = false;
+    var oneChar = false;
+
+  function listFilter(header, list) {
     var form = $("<form>").attr({"class":"filterform","action":"#"}),
-        input = $("<input>").attr({"class":"filterinput","type":"text"});
+    input = $("<input>").attr({"class":"filterinput","type":"text"});
     $(form).append(input).appendTo(header);
-
     $(input)
-      .change( function () {
+    .change( function () {
         var filter = $(this).val();
-        if(filter) {
-          $(list).find("a:not(:Contains(" + filter + "))").parent().slideUp();
-          $(list).find("a:Contains(" + filter + ")").parent().slideDown();
-        } else {
-          $(list).find("li").slideDown();
+        if(filter.length==1){
+            oneChar = true;
         }
-        return false;
-      })
+        if(filter.length==0 && oneChar == true){
+            $('.expanded').removeClass('collapsed');
+            $('.expanded').children().hide('medium');
+        }
+        if(filter.length>1){
+            oneChar = false;
+        }
+        if(filter) {
+            isCurrentlyTyping = true;
+            $(list).find("p:not(:Contains(" + filter + "))").parent().slideUp();
+            $(list).find("p:Contains(" + filter + ")").parent().slideDown();
+            $('.collapsed').addClass('expanded');
+            $('.collapsed').children().show('medium');
+        } else {
+            isCurrentlyTyping = false;
+          $(list).find("li").slideDown();
+          $('.expanded').removeClass('collapsed');
+          $('.expanded').children().hide('medium');
+      }
+      
+      return false;
+  })
     .keyup( function () {
         $(this).change();
     });
-  }
+}
 
-
-  //ondomready
-  $(function () {
+$(function () {
     listFilter($("#header"), $("#list"));
+});
+}(jQuery));
+
+function prepareList() {
+    $('#list').find('li:has(p)')
+    .click( function(event) {
+        if (this == event.target) {
+            $(this).toggleClass('expanded');
+            $(this).children('p').toggle('medium');
+        }
+        return false;
+    })
+    .addClass('collapsed')
+    .children('p').hide();
+};
+
+$(document).ready( function() {
+  prepareList();
+});
+
+$('#expandList')
+.unbind('click')
+.click( function() {
+    $('.collapsed').addClass('expanded');
+    $('.collapsed').children().show('medium');
+})
+$('#collapseList')
+.unbind('click')
+.click( function() {
+    $('.collapsed').removeClass('expanded');
+    $('.collapsed').children().hide('medium');
+});
+
+$(function prepareList() {
+    $('#list').find('li:has(ul)').unbind('click').click(function(event) {
+        if(this == event.target) {
+            $(this).toggleClass('expanded');
+            $(this).children('ul').toggle('medium');
+        }
+        return false;
+    }).addClass('collapsed').removeClass('expanded').children('ul').hide();
+    $('#list a').unbind('click').click(function() {
+        window.open($(this).attr('href'));
+        return false;
     });
-    }(jQuery));
-	</script>
+    $('#expandList').unbind('click').click(function() {
+        $('.collapsed').addClass('expanded');
+        $('.collapsed').children().show('medium');
+    })
+    $('#collapseList').unbind('click').click(function() {
+        $('.collapsed').removeClass('expanded');
+        $('.collapsed').children().hide('medium');
+    })
+});
+
+</script>
+
+
 </head>
 
 <body>
 
-<div id="status">
-</div>
+    <div id="status">
+    </div>
 
     <nav id = "myScrollspy" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
@@ -84,48 +153,173 @@
         </div>
     </nav>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default LoginForm">
-                <div class="panel-heading">
-                    <h3 id="header"class="panel-title text-center"><p id="title">Duke University Resources</p></h3>
-                </div>
-                <div class="panel-body">
-                    <ul id="list">
-                    <u>On-Campus Organizations:</u><br/>
-                    <li><a href="https://studentaffairs.duke.edu/duwell/contact-us">Wellness Center</a></li>
-                    <li><a href="https://studentaffairs.duke.edu/studenthealth">Student Health</a></li>
-                    <li><a href="https://studentaffairs.duke.edu/caps">CAPS (Counseling & Psychological Services)</a></li>
-                    <li><a href="https://www.facebook.com/Duke-University-CAPS-257367381584/">CAPS Facebook</a><br/></li>
-                    <li><a href="https://www.facebook.com/dukenami/">NAMI (National Alliance on Mental Illness)</a></li>
-                    <li><a href="https://studentaffairs.duke.edu/caps/workshops-and-discussions">Workshops and Discussions</a></li>
-                    <li><a href="https://studentaffairs.duke.edu/wc">Women's Center</a><br/>
-                    <li>Email Women's Center: <a href="mailto:womenctr@duke.edu">womenctr@duke.edu</a></li>
-                    <li><a href="https://duke.collegiatelink.net/organization/caps/events?onlyCurrent=False
-                    ">Event Calendar</a></li>
-                    <li><a href="https://studentaffairs.duke.edu/dukereach1">Duke Reach</a></li><br/>
-                    
-                    <u>LGBTQ Resources:</u><br/>
-                    <li><a href="http://sites.duke.edu/dukelgbtnetwork/">LGBTQ Network</a></li>
-                    <li><a href="https://studentaffairs.duke.edu/csgd">Center for Sexual and Gender Diversity (CSGD):</a></li>
-                    <li>Email CSGD: <a href="mailto:csgd@studentaffairs.duke.edu">csgd@studentaffairs.duke.edu</a></li>
-                    <li><a href="http://www.bluedevilsunited.com/">Blue Devils United</a></li>
-                    <li><a href="http://fuqua.campusgroups.com/pride/about/">Fuqua Pride</a></li>
-                    <li><a href="https://www.facebook.com/DukeAthleteAlly?fref=ts">Athlete Allys</a></li>
-                    <li><a href="https://www.facebook.com/groups/498950670166671/">Duke Nursing GSA Facebook</a></li>
-                    <li><a href="http://sites.duke.edu/dukemedpride/">DukeMed Pride</a></li>
-                    <li><a href="http://sites.duke.edu/outlaw/">Duke Law LGBTQ</a></li>
-                    <br/><u>Phone Numbers:</u><br/>
-                    <li>Gender Violence Prevention and Intervention</a>: 919-684-3897</li>
-                    <li>Page Dean-on-Call: 919-970-4169</li>
-                    <li>Center for Seuxal and Gender Diversity: 919-684-6607</li>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default LoginForm">
+                    <div class="panel-heading">
+                        <h3 id="header"class="panel-title text-center"><p id="title">Duke University Mental Health Resources
+                        </p></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="listControl">
+                            <input id="expandList" class="btn btn-lg btn-default btn-block" type="submit" value="Expand">
+                            <input id="collapseList" class="btn btn-lg btn-default btn-block" type="submit" value="Collapse">
+                        </div>
+                        <br/>
+                        <ul id="list">
+                            <u>On-Campus Organizations:</u><br/>
+                            <li>Wellness Center
+                                <p class="indent">
+                                    &bull; <a href="https://studentaffairs.duke.edu/duwell/contact-us">Website</a><br/>
+                                    &bull; The Student Wellness Center (DUWELL) helps students focus on their individual Wellness by looking at the integration of many areas of their life, including financial, social, spiritual, intellectual, mind-body well-being, and the environment around them.
+                                </p>
+                            </li>
+                            <li>Peer4You
+                                <p class="indent">
+                                    &bull; <a href="https://peerforyou.org/">Website</a><br/>
+                                    &bull; The mission of Peer for You is to make it easy for any Duke student to reach out and find what they need in a time of mental struggle.” Allows students to anonymously message a CAPS trained student at any time, about anything. 
+                                </p>
+                            </li>
+                            <li>Student Health
+                                <p class="indent">
+                                    &bull; <a href="https://studentaffairs.duke.edu/studenthealth">Website</a><br/>
+                                </p>
+                            </li>
+                            <li>CAPS (Counseling & Psychological Services)
+                                <p class="indent">
+                                    &bull; Counseling and Psychological Services (CAPS) helps Duke students enhance strengths and develop abilities to successfully live, grow, and learn in their personal and academic lives.<br/>
+                                    &bull; <a href="https://studentaffairs.duke.edu/caps">CAPS Website</a><br/>
+                                    &bull; <a href="https://www.facebook.com/Duke-University-CAPS-257367381584/">CAPS Facebook</a><br/>
+                                    &bull; Phone number: 919-660-1000
+                                </p>
+                            </li>
+                            <li>NAMI (National Alliance on Mental Illness)
+                                <p class="indent">
+                                    &bull; <a href="https://www.facebook.com/dukenami/">NAMI Facebook</a>
+                                </li>
+                                <li>Workshops and Discussions
+                                    <p class="indent">
+                                        &bull; <a href="https://studentaffairs.duke.edu/caps/workshops-and-discussions">Website</a>
+                                    </p>
+                                </li>
+                                <li>Department of Psychiatry and Behavioral Sciences at Duke University Medical Center
+                                    <p class="indent">
+                                        &bull; The Department of Psychiatry and Behavioral Sciences at Duke University Medical Center- provides a wide range of professional services to the psychiatric population ranging from specialized clinics such as Behavioral Medicine, ECT, and DAP to outpatient programs.<br/>
+                                        &bull; <a href="http://psychiatry.duke.edu/patient-care/adult-services">Website</a>
+                                    </p>
+                                </li>
+                                <li>Women's Center
+                                    <p class="indent">
+                                        &bull; Confidential counseling, advocacy and information for all genders.<br/>
+                                        &bull; <a href="https://studentaffairs.duke.edu/wc">Women's Center</a><br/>
+                                        &bull; Email: <a href="mailto:womenctr@duke.edu">womenctr@duke.edu</a>
+                                    </p>
+                                </li>
+                                <li>Event Calendar
+                                    <p class="indent">
+                                        &bull; <a href="https://duke.collegiatelink.net/organization/caps/events?onlyCurrent=False">Website</a>
+                                    </p>
+                                </li>
+                                <li>Duke Reach
+                                    <p class="indent">
+                                        &bull; <a href="https://studentaffairs.duke.edu/dukereach1">Website</a><br/>
+                                        &bull; Vision: To serve the Duke community by coordinating support efforts both on and off campus in order to assist students facing challenges, stressors, and barriers that impede academic and personal success.<br/>
+                                    </p>
+                                </li>
+                                <li>Office of Diversity and Inclusion
+                                    <p class="indent">
+                                        &bull; <a href="https://medschool.duke.edu/about-us/diversity-and-inclusion/office-diversity-inclusion/about-office-diversity-inclusion">Website</a>
+                                    </p>
+                                </li>
+                                <li>Duke Psychology Clinic
+                                    <p class="indent">
+                                        &bull; A part of the Department of Psychology and Neuroscience of Duke, this clinic provides psychotherapy to clients as a part of a graduate training program. These highly advanced graduate students are closely overseen by clinicians, offering both short and long term services.<br/>
+                                        &bull; <a href="http://psychandneuro.duke.edu/graduate/clinical/clinic">Website</a>
+                                    </p>
+                                </li>
+                                <br/>
+                                <u>LGBTQ Resources:</u><br/>
+                                <li>Center for Sexual and Gender Diversity
+                                    <p class="indent">
+                                        &bull; <a href="https://studentaffairs.duke.edu/csgd">CSGD Website</a><br/>
+                                        Email CSGD: <a href="mailto:csgd@studentaffairs.duke.edu">csgd@studentaffairs.duke.edu</a><br/>
+                                        Phone number: 919-684-6607
+                                    </p>
+                                </li>
+                                <li>LGBTQ Network
+                                    <p class="indent">
+                                        &bull; The Duke LGBTQ Network is an organization dedicated to serving the lesbian, gay, bisexual, transgender, and queer (LGBTQ) community of the University. The Network welcomes alumni, students, faculty, staff, and friends of Duke.<br/>
+                                        &bull; <a href="http://sites.duke.edu/dukelgbtnetwork/">Website</a><br/>
+                                        &bull; <a href="https://www.facebook.com/groups/dukelgbtnetwork/">Facebook Page</a>
+                                    </p>
+                                </li>
+                                <li>Blue Devils United
+                                    <p class="indent">
+                                        &bull; BDU is Duke's undergraduate student group for promoting inclusivity of sexual and gender diversity.<br/>
+                                        &bull; <a href="http://www.bluedevilsunited.com/">Website</a><br/>
+                                        &bull; <a href="https://www.facebook.com/bluedevilsunited/?fref=ts">Facebook Page</a>
+                                    </p>
+                                </li>
+                                <li>Athlete Allys
+                                    <p class="indent">
+                                        &bull; We pledge to create a culture of inclusion in the athletic community @ Duke by advocating for respect for athletes, fans, coaches, and staff of all identities.<br/>
+                                        <a href="https://www.facebook.com/DukeAthleteAlly?fref=ts">Facebook page</a>
+                                    </p>
+                                </li>
+                                <li>Duke Nursing GSA (DUSON Spectrum)
+                                    <p class="indent">
+                                        <a href="https://www.facebook.com/groups/498950670166671/">Facebook Page</a>
+                                    </p>
+                                </li>
+                                <li>DukeMed Pride
+                                    <p class="indent">
+                                        &bull; DukeMed Pride is a student-led group consisting of LGBTQ and allied students within the Duke University School of Medicine. DukeMed Pride works to address the healthcare issues of sexual and gender diverse peoples with a cohesive and holistic approach.<br/>
+                                        <a href="http://sites.duke.edu/dukemedpride/">Website</a>
+                                    </p>
+                                </li>
+                                <li>Duke Outlaw
+                                    <p class="indent">
+                                    &bull; LGBT/Q at Duke University School of Law<br/>
+                                    &bull; <a href="http://sites.duke.edu/outlaw/">Website</a>
+                                </li>
+                                <li>Gender Violence Prevention and Intervention</a>
+                                    <p class="indent">
+                                    &bull; Phone number: 919-684-3897
+                                </li>
+                                <li>Dean-on-Call
+                                    <p class="indent">
+                                    &bull; Phone number: 919-970-4169
+                                </li>
+                                <br/>
+                                <u>Campaigns:</u>
+                                <li>Me Too Campaign
+                                    <p class="indent">
+                                    &bull;A Center for Race Relations-created campaign designed to create a supportive community on Duke Campus where students feel comfortable expressing themselves. Host an annual Me Too Monologues show where actors perform true stories submitted by the Duke Community.<br/>
+                                    &bull; <a href="http://metooblog.tumblr.com/">Tumblr Blog</a><br/>
+                                    &bull; <a href="https://www.facebook.com/metoocampaign">Facebook Page</a><br/>
+                                    &bull; <a href="https://www.facebook.com/MeTooMonologues">Facebook Monologues Page</a><br/>
+                                    </p>
+                                </li>
+                                <li>You Don’t Say Campaign
+                                    <p class="indent">
+                                        &bull; A photo campaign created by Blue Devils United and Think Before You Talk.<br/>
+                                        &bull; <a href="https://www.facebook.com/youdontsaycampaign/">Facebook page</a><br/>
+                                        &bull; <a href="https://twitter.com/youdontsayduke">Twitter</a>
+                                    </p>
+                                </li>
+                                <li>To Write Love on Her Arms
+                                    <p class="indent">
+                                        &bull; “Passionate, supportive community of students that use art and music as platforms to promote open and honest conversation about topics such as mental health, struggle, and the power of vulnerability.” Plan on open-mic night and annual concert.<br/>
+                                        &bull; <a href="https://www.facebook.com/twlohaduke/">Website</a>
+                                    </p>
+                                </li>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
-        </div>
-    </div>
-</div>
-
-</body>
-</html>
+        </body>
+        </html>
