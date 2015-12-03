@@ -9,20 +9,25 @@ require("check.php");
 
 session_start();
 
+function contains($needle, $haystack) {
+    return strpos($haystack, $needle) !== false;
+}
+
+//echo "user session exists";
 if(isset($_SESSION['username'])) {
-	//echo "user session exists";
-	if(!empty($_POST['individual']) || !empty($_POST['group'])) {
-		  //echo "post data exists";
+
+  //echo "post data exists";
+	if(!empty($_POST)) {
       
       // add user into online
       if (!empty($_POST['speaker'])) {
-      	$role = $_POST['speaker'];
+      	$role = $_POST['submit'];
       }
       if (!empty($_POST['listener'])) {
-      	$role = $_POST['listener'];
+      	$role = $_POST['submit'];
       }
-      if (!empty($_POST['group'])) {
-      	$role = $_POST['group'];
+      if (!empty($_POST['group']) && contains("chat",$_POST['submit'])) {
+      	$role = "group";
       }
 
       //set session role var
@@ -92,7 +97,6 @@ if(isset($_SESSION['username'])) {
         $_SESSION['chat_ready'] = true;
 	      //header("Location: ../individualchat.html");
       }
-
   }
 }
 
