@@ -1,4 +1,9 @@
 <?php
+/*
+SOURCES, ATTRIBUTIONS, WHO DID WHAT:
+Dennis: Created script
+*/
+
 require("config.php");
 require("check.php");
 
@@ -6,9 +11,9 @@ session_start();
 
 if(isset($_SESSION['username'])) {
 	//echo "user session exists";
-	if(!empty($_POST)) {
+	if(!empty($_POST['individual']) || !empty($_POST['group'])) {
 		  //echo "post data exists";
-
+      
       // add user into online
       if (!empty($_POST['speaker'])) {
       	$role = $_POST['speaker'];
@@ -21,7 +26,7 @@ if(isset($_SESSION['username'])) {
       }
 
       //set session role var
-      $_SESSION['chat_type'] = $role;
+      $_SESSION['role'] = $role;
 
       // Check if the username is assigned to role
       $query = "
@@ -31,7 +36,7 @@ if(isset($_SESSION['username'])) {
             AND role <> :role";
       $query_params = array(
         ':username' => $_SESSION['username'],
-        ':role' => $role
+        ':role' => $_SESSION['role']
       );
 
       try {
@@ -48,7 +53,7 @@ if(isset($_SESSION['username'])) {
               WHERE username = :username";
         $query_params = array(
 	        ':username' => $_SESSION['username'],
-	        ':role' => $role
+	        ':role' => $_SESSION['role']
         );
 
         try {
@@ -72,7 +77,7 @@ if(isset($_SESSION['username'])) {
 
 	      $query_params = array(
 	        ':username' => $_SESSION["username"],
-	        ':role' => $role,
+	        ':role' => $_SESSION['role']
 	      );
 
 	      print_r($query_params);

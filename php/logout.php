@@ -1,4 +1,8 @@
 <?php
+/*
+SOURCES, ATTRIBUTIONS, WHO DID WHAT:
+Dennis: Created script
+*/
 require("config.php");
 session_start();
 

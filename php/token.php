@@ -1,4 +1,8 @@
 <?php
+/*
+SOURCES, ATTRIBUTIONS, WHO DID WHAT:
+Dennis: Created script
+*/
 
 use Firebase\Token\TokenException;
 use Firebase\Token\TokenGenerator;

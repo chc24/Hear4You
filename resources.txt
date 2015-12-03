@@ -1,3 +1,8 @@
+<!--
+SOURCES, ATTRIBUTIONS, WHO DID WHAT:
+Dennis/Adam: Gathered resources
+-->
+
 Title	URL
 Wellness Center	https://studentaffairs.duke.edu/duwell/contact-us
 Student Health	https://studentaffairs.duke.edu/studenthealth

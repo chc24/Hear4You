@@ -1,4 +1,9 @@
 <?php
+/*
+SOURCES, ATTRIBUTIONS, WHO DID WHAT:
+Dennis: Created script, implemented login
+*/
+
 require("config.php");
 require("check.php");
 
