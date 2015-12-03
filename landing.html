@@ -10,19 +10,19 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/landing.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	
-	<script>
-		$(document).ready(function() {
-			$.ajax({
-				type: "GET",
-				url: "php/swaplanding.php",
-				success: function(data) {
-					$("#swap-login").html(data);
-				}
-			})
-		});
-	</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+       $.ajax({
+        type: "GET",
+        url: "php/swaplanding.php",
+        success: function(data) {
+         $("#swap-login").html(data);
+     }
+ })
+   });
+  </script>
 </head>
 
 <body>
@@ -42,29 +42,82 @@
         </div>
     </nav>
 
-<div class="container">
+    <script>
+
+        $(document).ready(function(){
+            $("#BackButton").click(function() {
+                $("#GroupForm").fadeOut(500);
+                $("#ChatForm").fadeIn(500);
+            })
+            $("#GroupChat").click(function(){
+                $("#ChatForm").fadeOut(500);
+                $("#GroupForm").fadeIn(500);
+            });
+        });
+        function prepareList() {
+          $('#expList').find('li:has(ul)')
+          .click( function(event) {
+            if (this == event.target) {
+                $(this).toggleClass('expanded');
+                $(this).children('ul').toggle('medium');
+            }
+            return false;
+        })
+          .addClass('collapsed')
+          .children('ul').hide();
+      };
+
+      $(document).ready( function() {
+          prepareList();
+      });
+  </script>
+
+  <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
+            <div class="panel panel-default" id = "ChatForm">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Select your role</h3>
+                    <h3 class="panel-title">Select Chat</h3>
                 </div>
                 <div class="panel-body text-center">
                     <form method="post" action="php/update.php" class="form-horizontal" role="form">
                         <div class="form-group last">
                             <div class="col-sm-offset-2 col-sm-9">
-                                <input type="submit" value="Speaker"class="btn btn-default btn-sm sign" onclick="location.href='groupchat.html';" name="speaker"></input>
-                                <input type="submit" value="Listener" class="btn btn-default btn-sm" onclick="location.href='.html';" name="listener"></input>
-                                <input type="button" value = "Group Chat" class="btn btn-default btn-sm" onclick="location.href='groupchat.html';" name="group"></input>
-                                </div>
+                                <input type="button" value="Individual Chat"class="btn btn-default btn-sm sign" onclick="location.href='individualchat.html';" name="speaker"></input>
+                                <!-- <input type="submit" value="Listener" class="btn btn-default btn-sm" onclick="location.href='.html';" name="listener"></input> -->
+                                <input type="button" id = "GroupChat" value = "Browse Group Chats" class="btn btn-default btn-sm" name="group"></input>
+
                             </div>
-                            <p>Unsure on your role? Learn more <a href="index.html#roles">here.</a></p>
+
                         </div>
-                    </form>
-                </div>
+                        <p>Unsure on your role? Learn more <a href="index.html#roles">here.</a></p>
+                    </div>
+                </form>
             </div>
+
+            <div class="panel panel-default" id = "GroupForm" style = "display: none;">
+                <div class="panel-heading">
+                    <h3 id = "SelectChat" class="panel-title">Select Chat</h3>
+                </div>
+                <div class="panel-body text-center">
+                    <form method="post" action="php/update.php" class="form-horizontal" role="form">
+                        <div class="form-group last">
+                            <div class="col-sm-offset-2 col-sm-9">
+                            <input type="button" id = "BackButton" value="Back" class="btn btn-danger btn-sm sign "></input><br/>
+                                <input type="button" value="Depression Chat"class="btn btn-default btn-sm sign" onclick="location.href='groupchat.html';" name="speaker"></input><br/>
+                                
+
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
+</div>
 </div>
 
 </body>

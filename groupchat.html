@@ -46,7 +46,7 @@
 
 
   <div class = "jumbotron" id = "messages">
-  <h2 id = "groupName">Obesity</h2>
+  <h2 id = "groupName">Adam</h2>
     <div id='messagesDiv'>
 
     </div>
@@ -55,7 +55,7 @@
     <script>
       var colors = ["Red", "Green", "Orange", "Blue", "Yellow", "Pink", "Purple", "Teal", "Periwinkle", "Crimson"];
       var animals = ["Armadillo", "Crocodile", "Bear", "T-Rex", "Elephant", "Puppy", "Alligator"];
-      var name = colors[Math.floor(Math.random() * colors.length)] + " " + animals[Math.floor(Math.random() * animals.length)];
+      var name = colors[Math.floor(Math.random() * colors.length)] + " " + animals[Math.floor(Math.random() * animals.length)]+" "+Math.random()*10000;
 
       var chatroom = document.getElementsByTagName("h2");
       var chatroomName = chatroom[0].innerHTML;

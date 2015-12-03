@@ -21,3 +21,23 @@ h6 {
 .topnav {
     font-size: 18px; 
 }
+
+#GroupForm {
+	position: absolute;
+	z-index: 1;
+}
+
+.panel-default {
+	position: absolute;
+	z-index: 1;	
+	width: 100%;
+	margin-top: 40%;
+}
+
+.btn{
+	margin-bottom: 5px;
+}
+
+h3 {
+	text-align: center;
+}
