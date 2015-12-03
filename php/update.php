@@ -40,8 +40,8 @@ if(isset($_SESSION['username'])) {
       	$query = "
 	        UPDATE online SET role = :role WHERE username = :username";
 	    $query_params = array(
-        ':username' => $_SESSION['username'],
-        ':role' => $role
+	        ':username' => $_SESSION['username'],
+	        ':role' => $role
       	);
       	try {
             $stmt = $db->prepare($query);
