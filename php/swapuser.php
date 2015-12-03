@@ -1,5 +1,5 @@
 <?php
-	require("config.php");
+    require("config.php");
 
 	if($_SESSION['logged_in'] == true) {
 		echo "<ul class='nav navbar-nav navbar-right'>

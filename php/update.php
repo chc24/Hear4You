@@ -1,11 +1,14 @@
 <?php
 require("config.php");
+require("check.php");
+
 session_start();
 
 if(isset($_SESSION['username'])) {
 	//echo "user session exists";
 	if(!empty($_POST)) {
-		//echo "post data exists";
+		  //echo "post data exists";
+
       // add user into online
       if (!empty($_POST['speaker'])) {
       	$role = $_POST['speaker'];
@@ -16,6 +19,9 @@ if(isset($_SESSION['username'])) {
       if (!empty($_POST['group'])) {
       	$role = $_POST['group'];
       }
+
+      //set session role var
+      $_SESSION['chat_type'] = $role;
 
       // Check if the username is assigned to role
       $query = "
@@ -29,28 +35,31 @@ if(isset($_SESSION['username'])) {
       );
 
       try {
-            $stmt = $db->prepare($query);
-            $result = $stmt->execute($query_params);
+        $stmt = $db->prepare($query);
+        $result = $stmt->execute($query_params);
       } catch(PDOException $e){
         die("Failed to run query: " . $e->getMessage());
       }
 
       $row = $stmt->fetch();
       if($row){
-      	$query = "
-	        UPDATE online SET role = :role WHERE username = :username";
-	    $query_params = array(
+        $query = "
+              UPDATE online SET role = :role
+              WHERE username = :username";
+        $query_params = array(
 	        ':username' => $_SESSION['username'],
 	        ':role' => $role
-      	);
-      	try {
-            $stmt = $db->prepare($query);
-            $result = $stmt->execute($query_params);
-	      } catch(PDOException $e){
-	        die("Failed to run query: " . $e->getMessage());
-	      }
+        );
 
-        header("Location: ../individualchat.html");
+        try {
+          $stmt = $db->prepare($query);
+          $result = $stmt->execute($query_params);
+        } catch(PDOException $e){
+          die("Failed to run query: " . $e->getMessage());
+        }
+
+        $_SESSION['chat_ready'] = true;
+        //header("Location: ../individualchat.html");
       } else {
 	      	$query = "
 	        INSERT INTO `online` (
@@ -75,7 +84,8 @@ if(isset($_SESSION['username'])) {
 	        die("query failed: " . $e->getMessage());
 	      }
 
-	      header("Location: ../individualchat.html");
+        $_SESSION['chat_ready'] = true;
+	      //header("Location: ../individualchat.html");
       }
 
   }

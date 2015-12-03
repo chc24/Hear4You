@@ -19,4 +19,5 @@
   }
 
   session_start();
+  //require("check.php");
 ?>

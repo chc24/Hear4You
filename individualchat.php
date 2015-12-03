@@ -1,3 +1,6 @@
+<?php
+$_SESSION['chat_individual'] == true;
+?>
 <html>
 <head>
   <meta charset="utf-8">

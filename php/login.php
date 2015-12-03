@@ -1,5 +1,7 @@
 <?php
 require("config.php");
+require("check.php");
+
 session_start();
 
 if($_SESSION['logged_in'] == false) {
@@ -35,15 +37,15 @@ if($_SESSION['logged_in'] == false) {
 				if($check_password == $row[0]['password']) {
 					unset($row['salt']);
 					unset($row['password']);
-					//$_SESSION['user'] = $row['username'];
 					$_SESSION['logged_in'] = true;
 					$_SESSION['username'] = $row[0]['username'];
-					//$_SESSION['uid'] = $row['uid'];
 					header("Location: ../landing.html");
 				} else {
+					$_SESSION['registered'] = false;
 					header("Location: ../loginfail.html");
 				}
 			} else {
+        		$_SESSION['registered'] = false;
 				header("Location: ../loginfail.html");
 			}
 		}

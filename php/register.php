@@ -1,5 +1,8 @@
 <?php
     require("config.php");
+    require("check.php");
+
+    //session_start();
 
     if(!empty($_POST)) {
 
@@ -32,6 +35,7 @@
 
       $row = $stmt->fetch();
       if($row){
+        $_SESSION['registered'] = false;
         header("Location: ../registerfail.html");
       }
 
@@ -51,6 +55,7 @@
 
       $row = $stmt->fetch();
       if($row){
+        $_SESSION['registered'] = false;
         header("Location: ../registerfail.html");
       }
 
@@ -87,13 +92,15 @@
       try {
         $stmt = $db->prepare($query);
         $result = $stmt->execute($query_params);
-        //if ($result) {
-        //  echo "User Created Successfully";
-        //}
+        if ($result) {
+          //user is created successfully, added to db
+          //$_SESSION['registered'] = true;
+        }
       } catch(PDOException $e){
         die("query failed: " . $e->getMessage());
       }
-
-      header("Location: ../login.html");
+      
+      $_SESSION['registered'] = true;
+      //header("Location: ../login.html");
     }
 ?>
