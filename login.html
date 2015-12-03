@@ -24,15 +24,10 @@
 					$("#swap-login").html(data);
 				}
 			});
-
-            $.ajax({
-                type: "POST",
-                url: "php/status.php",
-                success: function(data) {
-                    $("#status").html(data);
-                }
-            });
 		});
+
+        //var currentLoginVal = <?php echo $_SESSION['logged_in']; ?>;
+        //var currentRegVal = <?php echo $_SESSION['registered']; ?>;
 	</script>
 </head>
 
