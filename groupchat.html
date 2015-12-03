@@ -55,7 +55,7 @@
     return title; //Dialog with the text you put on the textbox
   }
     function changeTitle(title) {
-      var cleaned = title.replace("+", " ");
+      var cleaned = title.replace(/\+/g, " ");
       var ChatTitle = document.getElementsByTagName("h2");
       ChatTitle[0].innerHTML = cleaned;
     }
