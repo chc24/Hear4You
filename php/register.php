@@ -2,19 +2,22 @@
     require("config.php");
     require("check.php");
 
-    //session_start();
+    session_start();
 
     if(!empty($_POST)) {
-
+      
       //check for empty files
       if(empty($_POST['username'])) {
         die("Enter username");
+        $_SESSION['registered'] = false;
       }
       if(empty($_POST['password'])) {
         die("Enter password");
+        $_SESSION['registered'] = false;
       }
       if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         die("Invalid email");
+        $_SESSION['registered'] = false;
       }
 
       // Check if the username is already taken
@@ -36,7 +39,7 @@
       $row = $stmt->fetch();
       if($row){
         $_SESSION['registered'] = false;
-        header("Location: ../registerfail.html");
+        //header("Location: ../registerfail.html");
       }
 
       //check if email is already taken
@@ -56,7 +59,7 @@
       $row = $stmt->fetch();
       if($row){
         $_SESSION['registered'] = false;
-        header("Location: ../registerfail.html");
+        //header("Location: ../registerfail.html");
       }
 
       // add user into db
@@ -94,13 +97,13 @@
         $result = $stmt->execute($query_params);
         if ($result) {
           //user is created successfully, added to db
-          //$_SESSION['registered'] = true;
+          $_SESSION['registered'] = true;
         }
       } catch(PDOException $e){
         die("query failed: " . $e->getMessage());
       }
-      
-      $_SESSION['registered'] = true;
+
+      //$_SESSION['registered'] = true;
       //header("Location: ../login.html");
     }
 ?>
