@@ -85,3 +85,11 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 #collapseList{
 	font-size: 12px;
 }
+
+#expList .collapsed{
+
+}
+
+#expList .expanded{
+	
+}
