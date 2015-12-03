@@ -25,7 +25,7 @@
             })
         });
     </script>
-
+  
 </head>
 <body>
   <nav id = "myScrollspy" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
@@ -46,7 +46,24 @@
 
 
   <div class = "jumbotron" id = "messages">
-  <h2 id = "groupName">Adam</h2>
+  <h2 id = "groupName"></h2>
+  <script>
+    function getTitle() {
+    var parameters = location.search.substring(1).split("&");
+    var temp = parameters[0].split("=");
+    var title = unescape(temp[1]);
+    return title; //Dialog with the text you put on the textbox
+  }
+    function changeTitle(title) {
+      var cleaned = title.replace("+", " ");
+      var ChatTitle = document.getElementsByTagName("h2");
+      ChatTitle[0].innerHTML = cleaned;
+    }
+
+  title = getTitle();
+  changeTitle(title);
+
+</script>
     <div id='messagesDiv'>
 
     </div>
@@ -55,7 +72,7 @@
     <script>
       var colors = ["Red", "Green", "Orange", "Blue", "Yellow", "Pink", "Purple", "Teal", "Periwinkle", "Crimson"];
       var animals = ["Armadillo", "Crocodile", "Bear", "T-Rex", "Elephant", "Puppy", "Alligator"];
-      var name = colors[Math.floor(Math.random() * colors.length)] + " " + animals[Math.floor(Math.random() * animals.length)]+" "+Math.random()*10000;
+      var name = colors[Math.floor(Math.random() * colors.length)] + " " + animals[Math.floor(Math.random() * animals.length)]+" "+Math.floor(Math.random()*10000);
 
       var chatroom = document.getElementsByTagName("h2");
       var chatroomName = chatroom[0].innerHTML;

@@ -1,6 +1,6 @@
 
 .jumbotron {
-	margin-top: 100px;
+	margin-top: 75px;
 	border-top: 50px;
 	margin-left: auto;
 	margin-right: auto;
@@ -32,4 +32,14 @@ body {
 .message {
 	margin-bottom: 10px;
 	padding-bottom: 10px;
+}
+
+h2 {
+	margin-left: 40px;
+}
+
+.message {
+	border-bottom: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
 }
