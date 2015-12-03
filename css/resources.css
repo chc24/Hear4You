@@ -73,3 +73,15 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 #list > li > p{
 	margin-left: 20px;
 }
+
+.hidden{
+	display: none;
+}
+
+#expandList{
+	font-size: 12px;
+}
+
+#collapseList{
+	font-size: 12px;
+}

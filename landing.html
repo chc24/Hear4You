@@ -14,14 +14,14 @@
 
     <script>
       $(document).ready(function() {
-       $.ajax({
-        type: "GET",
-        url: "php/swaplanding.php",
-        success: function(data) {
-         $("#swap-login").html(data);
-     }
- })
-   });
+         $.ajax({
+            type: "GET",
+            url: "php/swaplanding.php",
+            success: function(data) {
+               $("#swap-login").html(data);
+           }
+       })
+     });
   </script>
 </head>
 
@@ -45,13 +45,18 @@
     <script>
 
         $(document).ready(function(){
-            $("#BackButton").click(function() {
+            $(".BackButton").click(function() {
+                $("#IndividualForm").fadeOut(500);
                 $("#GroupForm").fadeOut(500);
                 $("#ChatForm").fadeIn(500);
             })
             $("#GroupChat").click(function(){
                 $("#ChatForm").fadeOut(500);
                 $("#GroupForm").fadeIn(500);
+            });
+            $("#IndividualChat").click(function() {
+                $("#ChatForm").fadeOut(500);
+                $("#IndividualForm").fadeIn(500);
             });
         });
         function prepareList() {
@@ -83,9 +88,9 @@
                     <form method="post" action="php/update.php" class="form-horizontal" role="form">
                         <div class="form-group last">
                             <div class="col-sm-offset-2 col-sm-9">
-                                <input type="button" value="Individual Chat"class="btn btn-default btn-sm sign" onclick="location.href='individualchat.html';" name="speaker"></input>
+                                <input type="button" id = "IndividualChat" value="Individual Chat"class="btn btn-default btn-sm sign" name="individual"></input>
                                 <!-- <input type="submit" value="Listener" class="btn btn-default btn-sm" onclick="location.href='.html';" name="listener"></input> -->
-                                <input type="button" id = "GroupChat" value = "Browse Group Chats" class="btn btn-default btn-sm" name="group"></input>
+                                <input type="button" id = "GroupChat" value = "Browse Group Chats" class="btn btn-default btn-sm sign" name="group"></input>
 
                             </div>
 
@@ -103,12 +108,27 @@
                     <form method="GET" action="groupchat.html" class="form-horizontal" role="form">
                         <div class="form-group last">
                             <div class="col-sm-offset-2 col-sm-9">
-                            <input type="button" id = "BackButton" value="Back" class="btn btn-danger btn-sm sign "></input><br/>
+                                <input type="button" value="Back" class="btn btn-danger btn-sm sign BackButton "></input><br/>
                                 <input type="submit" value="Depression Chat"class="btn btn-default btn-sm sign" onclick="location.href='groupchat.html';" name="submit" id = "submit"></input><br/>
                                 <input type="submit" value="Insomnia Chat"class="btn btn-default btn-sm sign" onclick="location.href='groupchat.html';" name="submit" id = "submit"></input><br/>
-                                <input type="submit" value="Anxiety Chat"class="btn btn-default btn-sm sign" onclick="location.href='groupchat.html';" name="submit" id = "submit"></input><br/>
-                                
+                                <input type="submit" value="Anxiety Chat"class="btn btn-default btn-sm sign" onclick="location.href='groupchat.html';" name="submit" id = "submit"></input>
+                            </div>                
+                        </div>
+                    </div>
+                </form>
+            </div>
 
+            <div class="panel panel-default" id = "IndividualForm" style = "display: none;">
+                <div class="panel-heading">
+                    <h3 id = "SelectChat" class="panel-title">Select Role</h3>
+                </div>
+                <div class="panel-body text-center">
+                    <form method="GET" action="groupchat.html" class="form-horizontal" role="form">
+                        <div class="form-group last">
+                            <div class="col-sm-offset-2 col-sm-9">
+                                <input type="button" value="Back" class="btn btn-danger btn-sm sign BackButton"></input><br/>
+                                <input type="submit" value="Speaker"class="btn btn-default btn-sm sign" onclick="location.href='groupchat.html';" name="submit" id = "submit"></input><br/>
+                                <input type="submit" value="Listener"class="btn btn-default btn-sm sign" onclick="location.href='groupchat.html';" name="submit" id = "submit"></input><br/>
                             </div>
                             
                         </div>
@@ -116,7 +136,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>

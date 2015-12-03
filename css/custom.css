@@ -2,6 +2,10 @@ div .panel-default{
   margin-top: 100px;
 }
 
+div .panel-danger{
+  margin-top: 100px;
+}
+
 .white{
     color:#000;
     background-color:#fff;
