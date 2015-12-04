@@ -1,6 +1,7 @@
 <!--
 SOURCES, ATTRIBUTIONS, WHO DID WHAT:
-Calvin: Created page (Firebase chat implementation, implemented chat room)
+Calvin: Created page (Firebase chat implementation)
+Dennis: Edited chat room implementation for matchmaking
 
 Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
 -->
