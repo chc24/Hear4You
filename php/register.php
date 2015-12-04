@@ -108,13 +108,8 @@ Dennis: Created script
         die("query failed: " . $e->getMessage());
       }
 
-      
-      $_SESSION['registered'] = true;
-
       $msg = "You have signed up for Hear4You's mailing list!\nYou won't ever be able to unsubscribe so don't even try!";
       $title = "Hear4You";
       mail($_POST['email'], $title, $msg);
-
-      //header("Location: ../login.html");
     }
 ?>
