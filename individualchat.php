@@ -44,30 +44,21 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
   
 </head>
 <body>
-  <!-- Navigation -->
-  <nav id = "myScrollspy" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-    <div class="container topnav">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand topnav" href="#">Hear4You</a>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="index.html#home">Home</a> </li>
-          <li><a href="index.html#mission">Mission</a></li>
-          <li><a href="index.html#roles">Roles</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="login.html">Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+   <nav id = "myScrollspy" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="index.html">Hear4You</a>
+            </div>
+            <div class="collapse navbar-collapse" id="swap-login">
+            </div>
+        </div>
+    </nav>
 
 
 
