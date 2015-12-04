@@ -20,11 +20,7 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
   <!-- Firechat -->
   <link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.css" />
   <script src="https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.js"></script>
-  <?php
-      if(isset($_SESSION['roomID']){
-        echo '<h5>'.$_SESSION['roomID'].'</h5>';
-      }
-  ?>
+
   <!-- Bootstrap -->
   <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -74,18 +70,26 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
 
 
   <div class = "jumbotron" id = "messages">
-    <h2 id = "groupName"></h2>
+
+    <h2 id = "groupName">Individual Chat</h2>
     <h4 id = "chatID"></h4>
-    <h5 id = "chatroomNumber">
-    </h5>
+    <h5 id = "chatroomNumber"><?php
+    session_start();
+      if(isset($_SESSION['roomID'])){
+        echo "Room ID is " . '<i>'.$_SESSION['roomID'].'</i>';
+      }
+  ?></h5>
+
     <div id='messagesDiv'>
 
     </div>
     <!--  <input type='text' id='nameInput' placeholder='Name'> -->
     <input type='text' id='messageInput' placeholder='Enter your message here'>
     <script>
-      var colors = ["Red", "Green", "Orange", "Blue", "Yellow", "Pink", "Purple", "Teal", "Periwinkle", "Crimson"];
-      var animals = ["Armadillo", "Crocodile", "Bear", "T-Rex", "Elephant", "Puppy", "Alligator"];
+
+      var colors = ["Red", "Green", "Orange", "Blue", "Yellow", "Pink", "Purple", "Teal", "Periwinkle", "Crimson", "Turqoise", "Jade", "Clementine", "Tangerine"];
+      var animals = ["Armadillo", "Crocodile", "Bear", "T-Rex", "Elephant", "Puppy", "Alligator", "Ghost"];
+
       var name = colors[Math.floor(Math.random() * colors.length)] + " " + animals[Math.floor(Math.random() * animals.length)]+" "+Math.floor(Math.random()*10000);
 
       //The Chatroom Genre

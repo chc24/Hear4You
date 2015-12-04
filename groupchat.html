@@ -55,6 +55,7 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
 
   <div class = "jumbotron" id = "messages">
   <h2 id = "groupName"></h2>
+  <h5 id = "chatID"></h5>
   <script>
     function getTitle() {
     var parameters = location.search.substring(1).split("&");
@@ -78,9 +79,11 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
    <!--  <input type='text' id='nameInput' placeholder='Name'> -->
     <input type='text' id='messageInput' placeholder='Enter your message here'>
     <script>
-      var colors = ["Red", "Green", "Orange", "Blue", "Yellow", "Pink", "Purple", "Teal", "Periwinkle", "Crimson"];
-      var animals = ["Armadillo", "Crocodile", "Bear", "T-Rex", "Elephant", "Puppy", "Alligator"];
+      var colors = ["Red", "Green", "Orange", "Blue", "Yellow", "Pink", "Purple", "Teal", "Periwinkle", "Crimson", "Turqoise", "Jade", "Clementine", "Tangerine"];
+      var animals = ["Armadillo", "Crocodile", "Bear", "T-Rex", "Elephant", "Puppy", "Alligator", "Ghost"];
       var name = colors[Math.floor(Math.random() * colors.length)] + " " + animals[Math.floor(Math.random() * animals.length)]+" "+Math.floor(Math.random()*10000);
+      var chatID = document.getElementsByTagName("h5");
+      chatID[0].innerHTML = "My name: " + name;
 
       var chatroom = document.getElementsByTagName("h2");
       var chatroomName = chatroom[0].innerHTML;
@@ -91,7 +94,7 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
           // var name = $('#nameInput').val();
-          var text = $('#messageInput').val();
+          var  text = $('#messageInput').val();
           groupRef.push({name: name, text: text});
           $('#messageInput').val('');
         }
@@ -100,10 +103,16 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
         var message = snapshot.val();
         displayChatMessage(message.name, message.text);
       });
+      
       function displayChatMessage(name, text) {
         $('<div/>').text(text).prepend($('<em class="message"/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
     </script>
+    <script>
+    // displayChatMessag e(name, " has joined the chat.");
+    groupRef.push({name: name, text: "has joined the chat."});
+    </script>
+
   </body>
   </html>

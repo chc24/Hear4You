@@ -67,6 +67,7 @@ Sources Used: Bootstrap, Jquery, ajax (Placed inline)
                 $("#IndividualForm").fadeIn(500);
             });
         });
+
         function prepareList() {
           $('#expList').find('li:has(ul)')
           .click( function(event) {
@@ -140,8 +141,9 @@ Sources Used: Bootstrap, Jquery, ajax (Placed inline)
                         <div class="form-group last">
                             <div class="col-sm-offset-2 col-sm-9">
                                 <input type="button" value="Back" class="btn btn-danger btn-sm sign BackButton"></input><br/>
-                                <input type="submit" value="Speaker"class="btn btn-default btn-sm sign" onclick="location.href='individualchat.html';" name="speaker" id = "submit"></input><br/>
-                                <input type="submit" value="Listener"class="btn btn-default btn-sm sign" onclick="location.href='individualchat.html';" name="listener" id = "submit"></input><br/>
+                                <input type="submit" value="Speaker"class="btn btn-default btn-sm sign" name="speaker" id = "Speaker"></input><br/>
+                                <input type="submit" value="Listener"class="btn btn-default btn-sm sign" name="listener" id = "Listener"></input><br/>
+                                <input type="hidden" value="Enter Chatroom" class="btn btn-default btun-sm sign" onclick="location.href='individualchat.html';" name="ChatroomGO" id = "GO" visibility="hidden;"></input></br/>
                             </div>
                             
                         </div>

@@ -49,7 +49,6 @@ if (isset($_SESSION['role'])) {
 			else {
 				$room_id = $assoc[$count-1]['id'];
 				$query = 'UPDATE rooms_open SET role = :role WHERE id = :id';
-				//echo '<h5>'.$assoc[$count-1]['id'].'</h5>';
 			}
 
 			$_SESSION['roomID'] = $room_id;
