@@ -82,7 +82,7 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
 
       <div>
       <form method="POST" action="javascript:leaveChatRoom()">
-          <input type="submit" value="Leave Chatroom" onClick="leaveChatRoom();"></input>
+          <input type="submit" value="Leave Chatroom" onClick="location.href = 'landing.html'"></input>
         </form>
       </div>
 
