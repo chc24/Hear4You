@@ -23,71 +23,82 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
   <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
   <script>
-        $(document).ready(function() {
-            $.ajax({
-                type: "POST",
-                url: "php/swapuser.php",
-                success: function(data) {
-                    $("#swap-login").html(data);
-                }
-            })
-        });
-    </script>
+    $(document).ready(function() {
+      $.ajax({
+        type: "POST",
+        url: "php/swapuser.php",
+        success: function(data) {
+          $("#swap-login").html(data);
+        }
+      })
+    });
+  </script>
   
 </head>
 <body>
   <nav id = "myScrollspy" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-        <div class="container topnav">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#swap-login">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand topnav" href="index.html">Hear4You</a>
-            </div>
-            <div class="collapse navbar-collapse" id="swap-login">
-            </div>
-        </div>
-    </nav>
+    <div class="container topnav">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#swap-login">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand topnav" href="index.html">Hear4You</a>
+      </div>
+      <div class="collapse navbar-collapse" id="swap-login">
+      </div>
+    </div>
+  </nav>
 
 
   <div class = "jumbotron" id = "messages">
-  <h2 id = "groupName"></h2>
-  <h5 id = "chatID"></h5>
-  <script>
-    function getTitle() {
-    var parameters = location.search.substring(1).split("&");
-    var temp = parameters[0].split("=");
-    var title = unescape(temp[1]);
+    <h2 id = "groupName"></h2>
+    <h5 id = "chatID"></h5>
+    <script>
+      function getTitle() {
+        var parameters = location.search.substring(1).split("&");
+        var temp = parameters[0].split("=");
+        var title = unescape(temp[1]);
     return title; //Dialog with the text you put on the textbox
   }
-    function changeTitle(title) {
-      var cleaned = title.replace(/\+/g, " ");
-      var ChatTitle = document.getElementsByTagName("h2");
-      ChatTitle[0].innerHTML = cleaned;
-    }
+  function changeTitle(title) {
+    var cleaned = title.replace(/\+/g, " ");
+    var ChatTitle = document.getElementsByTagName("h2");
+    ChatTitle[0].innerHTML = cleaned;
+  }
 
   title = getTitle();
   changeTitle(title);
 
 </script>
-    <div id='messagesDiv'>
+<div>
+  <form method="POST" action="javascript:leaveChatRoom()">
+    <input type="submit" value="Leave Chatroom" onClick="location.href = 'landing.html'"></input>
+  </form>
+</div>
+<div id='messagesDiv'>
 
-    </div>
-   <!--  <input type='text' id='nameInput' placeholder='Name'> -->
-    <input type='text' id='messageInput' placeholder='Enter your message here'>
-    <script>
+</div>
+<!--  <input type='text' id='nameInput' placeholder='Name'> -->
+<input type='text' id='messageInput' placeholder='Enter your message here'>
+<script>
+
+      //Generate random name once
       var colors = ["Red", "Green", "Orange", "Blue", "Yellow", "Pink", "Purple", "Teal", "Periwinkle", "Crimson", "Turqoise", "Jade", "Clementine", "Tangerine"];
       var animals = ["Armadillo", "Crocodile", "Bear", "T-Rex", "Elephant", "Puppy", "Alligator", "Ghost"];
       var name = colors[Math.floor(Math.random() * colors.length)] + " " + animals[Math.floor(Math.random() * animals.length)]+" "+Math.floor(Math.random()*10000);
+
+      //Display name
       var chatID = document.getElementsByTagName("h5");
       chatID[0].innerHTML = "My name: " + name;
 
+      //Groupname
       var chatroom = document.getElementsByTagName("h2");
       var chatroomName = chatroom[0].innerHTML;
 
+      //Join correct chatroom
       var myDataRef = new Firebase('hear4you.firebaseIO.com');
       var chatroomRef = myDataRef.child("Group-Chat");
       var groupRef = chatroomRef.child(chatroomName);
@@ -99,11 +110,14 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
           $('#messageInput').val('');
         }
       });
+
+      //On child added action event
       groupRef.on('child_added', function(snapshot) {
         var message = snapshot.val();
         displayChatMessage(message.name, message.text);
       });
       
+      //Display and attach to message Div
       function displayChatMessage(name, text) {
         $('<div/>').text(text).prepend($('<em class="message"/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
@@ -112,7 +126,7 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
     <script>
     // displayChatMessag e(name, " has joined the chat.");
     groupRef.push({name: name, text: "has joined the chat."});
-    </script>
+  </script>
 
-  </body>
-  </html>
+</body>
+</html>

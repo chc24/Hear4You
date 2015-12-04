@@ -69,21 +69,31 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
   </nav>
 
 
+
   <div class = "jumbotron" id = "messages">
     <h2 id = "groupName">Individual Chat</h2>
     <h4 id = "chatID"></h4>
     <h5 id = "chatroomNumber"><?php
-    session_start();
+      session_start();
       if(isset($_SESSION['roomID'])){
         echo "Room ID is " . '<i>'.$_SESSION['roomID'].'</i>';
       }
-  ?></h5>
-    <div id='messagesDiv'>
+      ?></h5>
 
-    </div>
-    <!--  <input type='text' id='nameInput' placeholder='Name'> -->
-    <input type='text' id='messageInput' placeholder='Enter your message here'>
-    <script>
+      <div>
+      <form method="POST" action="javascript:leaveChatRoom()">
+          <input type="submit" value="Leave Chatroom" onClick="leaveChatRoom();"></input>
+        </form>
+      </div>
+
+      <div id='messagesDiv'>
+
+      </div>
+      <!--  <input type='text' id='nameInput' placeholder='Name'> -->
+      <input type='text' id='messageInput' placeholder='Enter your message here'>
+      <script>
+
+      //Generate Random name
       var colors = ["Red", "Green", "Orange", "Blue", "Yellow", "Pink", "Purple", "Teal", "Periwinkle", "Crimson", "Turqoise", "Jade", "Clementine", "Tangerine"];
       var animals = ["Armadillo", "Crocodile", "Bear", "T-Rex", "Elephant", "Puppy", "Alligator", "Ghost"];
       var name = colors[Math.floor(Math.random() * colors.length)] + " " + animals[Math.floor(Math.random() * animals.length)]+" "+Math.floor(Math.random()*10000);
@@ -99,7 +109,7 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
       //The Chatroom ID Number used by Firebase
       var chatroomID = document.getElementsByTagName("h5");
 
-
+      //Join the correct chatroom
       var myDataRef = new Firebase('hear4you.firebaseIO.com');
       var chatroomRef = myDataRef.child("IndividualChats");
       var pairRef = chatroomRef.child(chatroomID[0].innerHTML);
@@ -111,10 +121,14 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
           $('#messageInput').val('');
         }
       });
+
+      //On child added Action Event
       pairRef.on('child_added', function(snapshot) {
         var message = snapshot.val();
         displayChatMessage(message.name, message.text);
       });
+
+      //Add to message Div
       function displayChatMessage(name, text) {
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
@@ -123,6 +137,14 @@ Sources Used: Firebase, Bootstrap, Jquery, ajax (Placed inline)
     <script>
     // displayChatMessage(name, " has joined the chat.");
     groupRef.push({name: name, text: "has joined the chat."});
+
+    function leaveChatRoom() {
+      alert("asfd");
+      displayChatMessage(name, text: " has left the chat.");
+      <?php
+        require(delete_match.php);
+        ?>
+    }
   </script>
 </body>
 </html>
