@@ -5,9 +5,7 @@ Dennis: Created script
 */
 
     require("config.php");
-    require("check.php");
-
-    session_start();
+    
 
     if(!empty($_POST)) {
       
@@ -112,4 +110,6 @@ Dennis: Created script
       $title = "Hear4You";
       mail($_POST['email'], $title, $msg);
     }
+
+    require("check.php");
 ?>
