@@ -8,14 +8,18 @@ Dennis: Created script
 	
 	if (isset($_SESSION)) {
 		if($_SESSION['logged_in'] == true){
-			if ($_SESSION['role'] == "individual") {
-				header("Location:../individualchat.html");
+			// if (isset($_SESSION['roomID'])) {
+			// 	header('Location: ../individualchat.php');
+			// }
+
+			if ($_SESSION['role'] == 'Speaker' || $_SESSION['role'] == 'Listener') {
+				if ($_SESSION['chat_ready'] == true) {
+					header("Location: find_match.php");
+				}
 			}
-			if ($_SESSION['chat_ready'] = true) {
-				//header("Location: ../login.html");
-			}
-			//register unsuccessful
-			if($_SESSION['registered'] == false) {
+			
+			// user is logged in but register is invalid
+			if($_SESSION['registered'] == true) {
 				header("Location: ../profile.html");
 			} else {
 				// if user is already logged, redirect to landing page

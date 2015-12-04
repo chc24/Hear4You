@@ -5,7 +5,7 @@ Dennis: Created script
 */
 
 require("config.php");
-require("check.php");
+//require("check.php");
 
 session_start();
 
@@ -13,25 +13,28 @@ function contains($needle, $haystack) {
     return strpos($haystack, $needle) !== false;
 }
 
-//echo "user session exists";
+//check if user sessions exists
 if(isset($_SESSION['username'])) {
+  //print_r($_SESSION);
 
-  //echo "post data exists";
+  //checking if post data exist
 	if(!empty($_POST)) {
-      
+      //set session role var
+      //$_SESSION['chat_ready'] = false;
+
       // add user into online
       if (!empty($_POST['speaker'])) {
-      	$role = $_POST['submit'];
+      	$role = $_POST['speaker'];
       }
       if (!empty($_POST['listener'])) {
-      	$role = $_POST['submit'];
+      	$role = $_POST['listener'];
       }
-      if (!empty($_POST['group']) && contains("chat",$_POST['submit'])) {
-      	$role = "group";
-      }
-
-      //set session role var
+      // if (!empty($_POST['group']) && contains("chat",$_POST['submit'])) {
+      // 	$role = "group";
+      // }
+      
       $_SESSION['role'] = $role;
+      //print_r($_SESSION);
 
       // Check if the username is assigned to role
       $query = "
@@ -69,7 +72,6 @@ if(isset($_SESSION['username'])) {
         }
 
         $_SESSION['chat_ready'] = true;
-        //header("Location: ../individualchat.html");
       } else {
 	      	$query = "
 	        INSERT INTO `online` (
@@ -85,8 +87,6 @@ if(isset($_SESSION['username'])) {
 	        ':role' => $_SESSION['role']
 	      );
 
-	      print_r($query_params);
-
 	      try {
 	        $stmt = $db->prepare($query);
 	        $result = $stmt->execute($query_params);
@@ -95,8 +95,9 @@ if(isset($_SESSION['username'])) {
 	      }
 
         $_SESSION['chat_ready'] = true;
-	      //header("Location: ../individualchat.html");
       }
+      header("Location: find_match.php");
+      //require("check.php");
   }
 }
 
